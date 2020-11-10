@@ -1,0 +1,965 @@
+a, abbr, acronym, address, applet, b, big, blockquote, body, button, caption, center, cite, code, dd, del, dfn, div, dl, dt, em, fieldset, font, footer, form, h1, h2, h3, h4, h5, h6, header, html, i, iframe, img, ins, kbd, label, legend, li, nav, object, ol, p, pre, q, s, samp, section, small, span, strike, strong, sub, sup, table, tbody, td, tfoot, th, thead, title, tr, tt, u, ul, var {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    outline: 0;
+    vertical-align: baseline;
+    background: 0 0;
+}
+
+:root {
+    --bg-dark: #1d1d1d;
+    --background-color: var(--google-gray-900);
+    --error-code-color: var(--google-gray-500);
+    --heading-color: var(--google-gray-500);
+    --link-color: var(--google-blue-300);
+    --primary-button-fill-color-active: rgb(129, 162, 208);
+    --primary-button-fill-color: var(--google-blue-300);
+    --primary-button-text-color: var(--google-gray-900);
+    --quiet-background-color: var(--background-color);
+    --secondary-button-border-color: var(--google-gray-700);
+    --secondary-button-fill-color: var(--google-gray-900);
+    --secondary-button-hover-fill-color: rgb(48, 51, 57);
+    --secondary-button-text-color: var(--google-blue-300);
+    --small-link-color: var(--google-blue-300);
+    --text-color: var(--google-gray-500);
+    --edge-black: #FFFFFF;
+    --edge-focus-color: #888;
+    --edge-blue-hover: #0070C6;
+    --edge-blue-pressed: #0069B9;
+    --edge-blue-rest: #0078D4;
+    --edge-blue-selected: #63ACE5;
+    --edge-border-hover: #909090;
+    --edge-border-pressed: #787878;
+    --edge-border-rest: #575757;
+    --edge-grey-background: #2D2D2D;
+    --edge-grey-selected: #676767;
+    --edge-light-grey-hover: #424242;
+    --edge-light-grey-pressed: #3E3E3E;
+    --edge-light-grey-rest: #464646;
+    --edge-text-blue-hover: #429BDF;
+    --edge-text-blue-rest: #63ACE5;
+    --edge-text-blue-pressed: #2189DA;
+    --edge-text-grey-rest: #949494;
+    --edge-white: #1D1D1D;
+    --edge-primary-button-focus-shadow: 0 0 0 2px inset #F2F8FD;
+}
+
+::-webkit-scrollbar {
+    width: 5px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: #9b9b9b;
+}
+
+    /* Handle on hover */
+    ::-webkit-scrollbar-thumb:hover {
+        background: #ff3e3e;
+    }
+
+html, body {
+    margin: 0;
+    padding: 0;
+}
+
+    body[theme='dark'] {
+        background: var(--bg-dark);
+    }
+
+.Toast-Container {
+    width: 100%;
+    height: 30px;
+    position: fixed;
+    top: 84vh;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    margin: auto;
+    z-index: 99999;
+}
+
+.Toast-Text {
+    width: auto;
+    min-width: 13px;
+    margin: auto;
+    display: table;
+    padding: 14px;
+    text-align: center;
+    font-size: 15px;
+    border-radius: 30px;
+    font-family: Roboto, Arial;
+    color: #fff;
+    background: rgba(0, 0, 0, 0.7);
+    font-weight: 100;
+    user-select: none !important;
+    -moz-transition: all 0.3s ease;
+    -o-transition: all 0.3s ease;
+    -webkit-transition: all 0.3s ease;
+    transition: all 0.3s ease;
+}
+
+@keyframes Toast-Popup {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    100% {
+        transform: translateY(0px);
+        opacity: 1;
+    }
+}
+
+.Tooltip {
+    width: auto;
+    min-width: 10px;
+    height: auto;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 333;
+    font-size: 13px;
+    font-family: Roboto, Arial;
+    color: #e3e3e3;
+    font-weight: 100;
+    background: rgba(0, 0, 0, 0.7);
+    padding: 4px;
+}
+
+interact[event="click"] {
+    display: inline-table;
+    width: auto;
+    height: auto;
+    position: absolute;
+    cursor: pointer;
+    border: 1px solid transparent;
+}
+
+.gx-highlight {
+    width: auto;
+    height: auto;
+    display: block;
+    background: #ff0000;
+    color: #000000;
+    -moz-transition: all 0.3s ease;
+    -o-transition: all 0.3s ease;
+    -webkit-transition: all 0.3s ease;
+    transition: all 0.3s ease;
+}
+
+Webconfig {
+    display: none;
+}
+
+BoomerObject {
+    display: none;
+}
+
+.Popup-left {
+    width: auto;
+    height: auto;
+    min-height: 115px;
+    min-width: 230px;
+    position: fixed;
+    top: 10vh;
+    left: 3vw;
+    z-index: 99999;
+    background: rgba(0, 0, 0, 0.7);
+}
+
+Layout {
+    width: auto;
+    height: auto;
+    position: relative;
+}
+
+Navbar {
+    width: 100%;
+    height: auto;
+    min-height: 68px;
+    position: absolute;
+}
+
+    Navbar[hover='true'] {
+        position: fixed;
+        top: 0;
+        left: 0;
+    }
+
+    Navbar[role='main'] {
+        width: 100vw;
+    }
+
+body[theme="dark"] Navbar {
+    background: #111111;
+}
+
+body[theme="dark"]:not(body[theme="dark"]) Navbar {
+    background: #1d1d1d;
+}
+
+Navbar NavbarTitle {
+    content: "";
+    width: auto;
+    height: auto;
+    font-size: 2em;
+    margin-top: 1.11%;
+    font-family: Roboto, Arial;
+    font-weight: 100;
+    color: #e3e3e3;
+    user-select: none;
+    outline: none;
+}
+
+    Navbar NavbarTitle[float='left'] {
+        float: left;
+        margin-left: 1%;
+    }
+
+Navbar ButtonList {
+    content: "";
+    width: auto;
+    height: auto;
+    float: left;
+}
+
+    Navbar ButtonList::after {
+        content: "";
+        display: inline-block;
+        position: absolute;
+        background: #fff;
+    }
+
+Navbar a {
+    float: left;
+    width: auto;
+    height: auto;
+    background: none;
+    border: none;
+    margin-top: 7%;
+    margin-right: 10px;
+    cursor: pointer;
+    color: #ababab;
+    font-family: Roboto, Arial;
+    font-weight: 100;
+    font-size: 1em;
+    outline: none;
+}
+
+    Navbar a:hover {
+        color: #e3e3e3;
+    }
+
+Navbar vl {
+    width: 1px;
+    background: #ababab;
+    float: left;
+    display: inline-block;
+    height: 35px;
+    margin-left: 20px;
+    margin-top: 14px;
+    margin-right: 20px;
+}
+
+Layout content {
+    width: auto;
+    height: auto;
+}
+
+*[background='default:red'] {
+    background: red;
+}
+
+*[background='default:gray'] {
+    background: gray;
+}
+
+*[background='default:black'] {
+    background: black;
+}
+
+*[background='default:dark'] {
+    background: #1d1d1d;
+}
+
+*[background='default:green'] {
+    background: green;
+}
+
+*[background='default:purple'] {
+    background: purple;
+}
+
+*[background='default:violet'] {
+    background: violet;
+}
+
+*[background='default:white'] {
+    background: white;
+}
+
+*[transition='smooth'] {
+    -moz-transition: all 0.3s ease;
+    -o-transition: all 0.3s ease;
+    -webkit-transition: all 0.3s ease;
+    transition: all 0.3s ease;
+}
+
+.g-code {
+    width: 100%;
+    height: auto;
+    min-height: 100vh;
+    font-family: monospace;
+    color: #e3e3e3;
+    background: #1d1d1d;
+    font-size: 12px;
+}
+
+.g-code-line {
+    width: auto;
+    height: auto;
+    display: inline-block;
+    margin-right: 3px;
+}
+
+.g-code-line-operator {
+    color: #5632eb;
+}
+
+.break {
+    width: 4px;
+}
+
+.g-code-line {
+    width: 100%;
+    height: 22px;
+    font-family: monospace;
+    max-height: 30px;
+    padding: 1px 0px 0px 0px;
+    font-size: 13px;
+    background: #2c2c2c;
+    display: block;
+}
+
+.g-code-line-number {
+    float: left;
+    width: 34px;
+    height: 100%;
+    background: #404040;
+    text-align: right;
+    color: #1532ff;
+    padding-right: 3px;
+}
+
+    .g-code-line-number div {
+        margin-top: 2px;
+    }
+
+.g-code-line-text {
+    width: auto;
+    height: auto;
+    float: left;
+    margin-left: 10px;
+    margin-top: 2px;
+}
+
+    .g-code-line-text pre {
+        display: inline;
+    }
+
+.g-code-line-text-operatror {
+    color: #e11e1e;
+}
+
+.g-syntax-highlighter {
+    width: 100vw;
+    height: 100vh;
+    position: relative;
+    background: transparent;
+    overflow: auto;
+}
+
+.g-syntax-highlighter-line {
+    width: 100%;
+    height: 27px;
+}
+
+.g-syntax-highlighter-line-number {
+    width: 50px;
+    height: 27px;
+    float: left;
+    position: relative;
+    content: "";
+    border-right: 1px solid #2a8ed0;
+}
+
+    .g-syntax-highlighter-line-number span {
+        width: auto;
+        height: auto;
+        display: block;
+        float: right;
+        margin-top: 5px;
+        margin-right: 7px;
+        font-size: 14px;
+        font-family: monospace;
+        color: #e3e3e3;
+        user-select: none;
+    }
+
+.g-syntax-highlighter-line-content {
+    width: auto;
+    min-width: calc(100% - 51px);
+    height: 27px;
+    float: left;
+}
+
+.g-syntax-highlighter-line-content-maintext {
+    width: auto;
+    height: auto;
+    display: block;
+    margin-top: 6px;
+    margin-left: 20px;
+    font-family: monospace;
+    color: #e3e3e3;
+}
+
+.g-syntax-highlighter-syntax-javascript-operator {
+    color: #3b8aea;
+}
+
+.g-syntax-highlighter-syntax-javascript-number {
+    color: #82fcdb;
+}
+
+.g-syntax-highlighter-syntax-javascript-string {
+    color: #d69d75;
+}
+
+g-syntax-highlighter-syntax-javascript-class {
+    color: #d94e4e;
+}
+
+.g-overlay {
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 999999;
+}
+
+.g-dialog {
+    width: 480px;
+    height: auto;
+    min-height: 150px;
+    position: fixed;
+    z-index: 999999;
+    left: 0;
+    right: 0;
+    top: 10px;
+    margin: auto;
+    border: none;
+    background: #353535;
+    box-shadow: -1px 1px 11px 6px #272727;
+    padding: 20px;
+    -moz-animation: g-dialog-fadein 0.2s ease;
+    -o-animation: g-dialog-fadein 0.2s ease;
+    -webkit-animation: g-dialog-fadein 0.2s ease;
+    animation: g-dialog-fadein 0.2s ease;
+    -moz-transition: opacity 0.1s, transform 0.1s ease;
+    -o-transition: opacity 0.1s, transform 0.1s ease;
+    -webkit-transition: opacity 0.1s, transform 0.1s ease;
+    transition: opacity 0.1s, transform 0.1s ease;
+}
+
+    .g-dialog[role='alert'] {
+        min-height: 100px;
+    }
+
+.g-dialog-hidden {
+    transform: translateY(-10px);
+    opacity: 0;
+    pointer-events: none;
+}
+
+@keyframes g-dialog-fadein {
+    0% {
+        transform: translateY(-10px);
+        opacity: 0;
+    }
+
+    100% {
+        transform: translateY(0px) rotateX(0deg);
+        opacity: 1;
+    }
+}
+
+.g-dialog .g-dialog-container {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    display: inline-block;
+}
+
+    .g-dialog .g-dialog-container .g-dialog-container-title {
+        width: 100%;
+        height: auto;
+        min-height: 20px;
+    }
+
+        .g-dialog .g-dialog-container .g-dialog-container-title span {
+            display: inline-block;
+            font-family: sans-serif, Arial;
+            color: #fff;
+            font-weight: 700;
+            font-size: 16px;
+            user-select: none;
+        }
+
+    .g-dialog .g-dialog-container .g-dialog-container-content {
+        width: 100%;
+        height: auto;
+        margin-top: 20px;
+        word-break: break-all;
+    }
+
+        .g-dialog .g-dialog-container .g-dialog-container-content span {
+            font-family: Roboto, sans-serif, Arial;
+            font-size: 12px;
+            color: #e3e3e3;
+        }
+
+    .g-dialog .g-dialog-container .g-dialog-container-input-container {
+        height: auto;
+        max-height: 60vh;
+        overflow-y: auto;
+        overflow-x: hidden;
+        margin-top: 20px;
+        min-height: 60px;
+    }
+
+        .g-dialog .g-dialog-container .g-dialog-container-input-container .g-dialog-container-input-container-target {
+            width: calc(100% - 12px);
+            height: 25px;
+            max-height: 25px;
+            margin: 15px auto;
+            background: none;
+            outline: none;
+            border: 1px solid #565656;
+            padding-top: 7px;
+            padding: 5px 5px 0px 5px;
+            position: relative;
+            content: "";
+            word-wrap: hyphenate;
+            -moz-transition: all 0.3s ease;
+            -o-transition: all 0.3s ease;
+            -webkit-transition: all 0.3s ease;
+            transition: all 0.3s ease;
+        }
+
+            .g-dialog .g-dialog-container .g-dialog-container-input-container .g-dialog-container-input-container-target:before {
+                content: attr(data-content);
+                position: absolute;
+                width: auto;
+                height: auto;
+                top: 8px;
+                left: 10px;
+                font-size: 13px;
+                font-family: sans-serif;
+                background: #353535;
+                color: #adadad;
+                -moz-transition: all 0.3s ease;
+                -o-transition: all 0.3s ease;
+                -webkit-transition: all 0.3s ease;
+                transition: all 0.3s ease;
+                pointer-events: none;
+            }
+
+        .g-dialog .g-dialog-container .g-dialog-container-input-container .g-dialog-container-input-container-target {
+            color: #989898;
+            font-size: 15px;
+            font-family: sans-serif;
+        }
+
+            .g-dialog .g-dialog-container .g-dialog-container-input-container .g-dialog-container-input-container-target:focus {
+                border: 1px solid #41a2ea;
+                color: #e3e3e3;
+            }
+
+                .g-dialog .g-dialog-container .g-dialog-container-input-container .g-dialog-container-input-container-target:focus:before {
+                    top: -7px;
+                    left: 20px;
+                    font-size: 10px;
+                }
+
+            .g-dialog .g-dialog-container .g-dialog-container-input-container .g-dialog-container-input-container-target:not(:empty) {
+                border: 1px solid #41a2ea;
+                color: #e3e3e3;
+            }
+
+                .g-dialog .g-dialog-container .g-dialog-container-input-container .g-dialog-container-input-container-target:not(:empty):before {
+                    top: -7px;
+                    left: 20px;
+                    font-size: 10px;
+                }
+
+    .g-dialog .g-dialog-container .g-dialog-container-buttoncontainer {
+        width: 100%;
+        height: 50px;
+    }
+
+        .g-dialog .g-dialog-container .g-dialog-container-buttoncontainer .g-dialog-container-buttoncontainer-button {
+            width: 60px;
+            height: auto;
+            text-align: center;
+            padding: 10px 15px;
+            background: #5f5f5f;
+            display: table;
+            float: right;
+            margin: 5px 0px 1px 20px;
+            cursor: pointer;
+            user-select: none;
+            -moz-transition: all 0.3s ease;
+            -o-transition: all 0.3s ease;
+            -webkit-transition: all 0.3s ease;
+            transition: all 0.3s ease;
+        }
+
+            .g-dialog .g-dialog-container .g-dialog-container-buttoncontainer .g-dialog-container-buttoncontainer-button span {
+                color: #e3e3e3;
+                font-family: sans-serif, Arial;
+                font-size: 11px;
+                font-weight: 700;
+            }
+
+            .g-dialog .g-dialog-container .g-dialog-container-buttoncontainer .g-dialog-container-buttoncontainer-button.button-accept {
+                background: #41a2ea;
+            }
+
+                .g-dialog .g-dialog-container .g-dialog-container-buttoncontainer .g-dialog-container-buttoncontainer-button.button-accept span {
+                    color: #000
+                }
+
+                .g-dialog .g-dialog-container .g-dialog-container-buttoncontainer .g-dialog-container-buttoncontainer-button.button-accept:hover {
+                    background: #328acc;
+                }
+
+            .g-dialog .g-dialog-container .g-dialog-container-buttoncontainer .g-dialog-container-buttoncontainer-button.button-cancel:hover {
+                background: #e53c3c;
+            }
+
+
+@media screen and (max-width: 800px) {
+    .g-dialog {
+        width: 70vw;
+        top: 20px;
+    }
+
+        .g-dialog .g-dialog-container .g-dialog-container-input-container .g-dialog-container-input-container-target {
+            height: 65px;
+            max-height: 90px;
+        }
+}
+
+.g-notification {
+    width: 410px;
+    height: auto;
+    min-height: 170px;
+    position: fixed;
+    z-index: 99999;
+    right: 20px;
+    bottom: 30px;
+    user-select: none;
+    -moz-transition: opacity 0.1s, transform 0.2s, bottom 0.5s cubic-bezier(0,.97,1,1);
+    -o-transition: opacity 0.1s, transform 0.2s, bottom 0.5s cubic-bezier(0,.97,1,1);
+    -webkit-transition: opacity 0.1s, transform 0.2s, bottom 0.5s cubic-bezier(0,.97,1,1);
+    transition: opacity 0.1s, transform 0.2s, bottom 0.5s cubic-bezier(0,.97,1,1);
+    -moz-animation: g-notification-fadein 0.4s cubic-bezier(0,.97,1,1);
+    -o-animation: g-notification-fadein 0.4s cubic-bezier(0,.97,1,1);
+    -webkit-animation: g-notification-fadein 0.4s cubic-bezier(0,.97,1,1);
+    animation: g-notification-fadein 0.4s cubic-bezier(0,.97,1,1);
+}
+
+.g-notification-hide {
+    transform: translateX(40px);
+    opacity: 0;
+}
+
+.g-notification {
+    box-shadow: -1px 1px 11px 6px #1d1d1d;
+    background: #131313;
+    padding: 20px;
+}
+
+@keyframes g-notification-fadein {
+    0% {
+        transform: translateX(40px);
+        opacity: 0;
+    }
+
+    100% {
+        transform: translateX(0px);
+        opacity: 1;
+    }
+}
+
+.g-notification-container {
+    width: 100%;
+    height: 100%;
+}
+
+.g-notification-container-title {
+    width: 100%;
+    height: auto;
+    min-height: 20px;
+}
+
+    .g-notification-container-title span {
+        display: inline-block;
+        font-family: Montserrat, sans-serif, Arial;
+        color: #fff;
+        font-weight: 700;
+        font-size: 24px;
+        user-select: none;
+    }
+
+.g-notification-container-hl {
+    width: 80%;
+    height: 1px;
+    margin: 30px 0px 10px 0px;
+    background: #656565;
+}
+
+.g-notification-container-content {
+    width: 100%;
+    height: auto;
+    margin-top: 20px;
+    max-height: 200px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    word-break: break-all;
+}
+
+    .g-notification-container-content span {
+        font-family: Roboto, sans-serif, Arial;
+        color: #e3e3e3;
+        font-size: 14px;
+    }
+
+.g-notification-container-buttoncontainer {
+    width: 100%;
+    height: 50px;
+    margin-top: 20px;
+}
+
+.g-notification-container-buttoncontainer-button {
+    width: 60px;
+    height: auto;
+    text-align: center;
+    padding: 10px 15px;
+    background: #5f5f5f;
+    display: table;
+    float: right;
+    margin: 5px 0px 1px 20px;
+    cursor: pointer;
+    user-select: none;
+    -moz-transition: all 0.3s ease;
+    -o-transition: all 0.3s ease;
+    -webkit-transition: all 0.3s ease;
+    transition: all 0.3s ease;
+}
+
+    .g-notification-container-buttoncontainer-button span {
+        color: #e3e3e3;
+        font-family: sans-serif, Arial;
+        font-size: 11px;
+        font-weight: 700;
+    }
+
+    .g-notification-container-buttoncontainer-button.button-accept {
+        background: #41a2ea;
+    }
+
+        .g-notification-container-buttoncontainer-button.button-accept span {
+            color: #000;
+        }
+
+        .g-notification-container-buttoncontainer-button.button-accept:hover {
+            background: #328acc;
+        }
+
+    .g-notification-container-buttoncontainer-button.button-cancel:hover {
+        background: #e53c3c;
+    }
+
+
+@media (prefers-color-scheme: light) {
+    .g-dialog {
+        background: #fdfdfd;
+        box-shadow: -1px 1px 11px 6px #868686;
+    }
+
+        .g-dialog .g-dialog-container .g-dialog-container-title span {
+            color: #000;
+        }
+
+        .g-dialog .g-dialog-container .g-dialog-container-input-container .g-dialog-container-input-container-target {
+            color: #000;
+        }
+
+            .g-dialog .g-dialog-container .g-dialog-container-input-container .g-dialog-container-input-container-target:focus {
+                color: #000;
+            }
+
+            .g-dialog .g-dialog-container .g-dialog-container-input-container .g-dialog-container-input-container-target:not(:empty) {
+                color: #000;
+            }
+
+            .g-dialog .g-dialog-container .g-dialog-container-input-container .g-dialog-container-input-container-target:before {
+                background: #fdfdfd;
+                color: #000;
+            }
+
+        .g-dialog .g-dialog-container .g-dialog-container-content span {
+            color: #000;
+        }
+
+    .g-notification {
+        box-shadow: -1px 1px 11px 6px #8e8e8e;
+        background: #fdfdfd;
+    }
+
+    .g-notification-container-title span {
+        color: #000;
+    }
+
+    .g-notification-container-content span {
+        color: #000;
+    }
+}
+
+
+body[theme='round'] .g-dialog-container-input-container-target {
+    border-radius: 50px;
+}
+
+body[theme='round'] .g-dialog .g-dialog-container .g-dialog-container-buttoncontainer .g-dialog-container-buttoncontainer-button {
+    border-radius: 40px;
+}
+
+body[theme='round'] .g-dialog {
+    border-radius: 20px;
+}
+
+body[theme='round'] .g-notification-container-buttoncontainer-button {
+    border-radius: 20px;
+}
+
+body[theme='round'] .g-notification {
+    border-radius: 12px;
+}
+
+.g-form {
+    width: 40vw;
+    height: 65vh;
+    border: 1px solid red;
+}
+
+
+
+    .g-form.form-center {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        z-index: 1;
+        margin: auto;
+    }
+
+    .g-form .form-navbar {
+        width: 100%;
+        height: 50px;
+        background: red;
+    }
+
+body[theme='modern'] .g-notification, body[theme='modern'] .g-dialog {
+    box-shadow: none;
+    background: rgba(0, 0, 0, 0.65);
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+}
+
+
+    body[theme='modern'] .g-dialog .g-dialog-container .g-dialog-container-input-container .g-dialog-container-input-container-target:focus, body[theme='modern'] .g-dialog .g-dialog-container .g-dialog-container-input-container .g-dialog-container-input-container-target:not(:empty) {
+        border: 1px solid transparent;
+    }
+
+body[theme='modern'] .g-dialog-container-input-container-target:after {
+    width: 0%;
+    height: 1px;
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin: auto;
+    z-index: 1;
+    bottom: 0;
+    background: #dd4444;
+    -moz-transition: all 0.3s ease;
+    -o-transition: all 0.3s ease;
+    -webkit-transition: all 0.3s ease;
+    transition: all 0.3s ease;
+}
+
+body[theme='modern'] .g-dialog-container-input-container-target:focus:after {
+    width: 100%;
+}
+
+body[theme='modern'] .g-dialog-container-input-container-target:not(:empty):after {
+    width: 100%;
+}
+
+body[theme='modern'] .g-dialog .g-dialog-container .g-dialog-container-input-container .g-dialog-container-input-container-target:before {
+    background: transparent;
+}
+
+/* Main style */
+
+html, body {
+    margin: 0;
+    padding: 0;
+    outline: none;
+}
+
+.container {
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+.app {
+    width: 100vw;
+    height: 100vh;
+}
+
+.app-foreground {
+    width: 100vw;
+    height: 100vh;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 2;
+}
+
+.app-main {
+    width: 100%;
+    height: calc(100% - 70px);
+}

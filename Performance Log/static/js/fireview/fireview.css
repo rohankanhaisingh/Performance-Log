@@ -1,0 +1,53 @@
+﻿html, body {
+    margin: 0;
+    padding: 0;
+}
+
+.fireview-fpsmeter {
+    width: 150px;
+    height: auto;
+    position: fixed;
+    top: 10px;
+    left: 10px;
+    z-index: 9999;
+}
+
+.fireview-fpsmeter {
+    padding: 10px;
+/*    border: 1px solid #8a8a8a;*/
+}
+
+.fpsmeter-container {
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+.fpsmeter-container-indicator {
+    width: 100%;
+    height: 5px;
+    position: relative;
+    overflow: hidden;
+    background: rgba(0, 0, 0, 0.40);
+    margin-bottom: 5px;
+}
+
+.indicator-visual {
+    width: 52px;
+    height: 100%;
+    background: #7be926;
+}
+
+.fpsmeter-container-text{
+    width: 100%;
+    height: 30px;
+    margin-top: 10px;
+    text-align: center;
+}
+
+.fpsmeter-container-text span {
+    color: lime;
+    font-family: monospace;
+    font-size: 13px;
+    user-select: none;
+}

@@ -1,0 +1,48 @@
+﻿<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>Test</title>
+</head>
+<body>
+    <canvas id="canvas" width="200" height="200" style="-moz-transform: rotate(-90deg); -ms-transform: rotate(-90deg); -o-transform: rotate(-90deg); -webkit-transform: rotate(-90deg); transform: rotate(-90deg);"></canvas>
+
+    <script type="text/javascript">
+        const canvas = document.getElementById("canvas");
+        const ctx = canvas.getContext("2d");
+
+        function rotate(cx, cy, x, y, angle) {
+            var radians = (Math.PI / 180) * angle,
+                cos = Math.cos(radians),
+                sin = Math.sin(radians),
+                nx = (cos * (x - cx)) + (sin * (y - cy)) + cx,
+                ny = (cos * (y - cy)) - (sin * (x - cx)) + cy;
+            return [nx, ny];
+        }
+
+        function timeout(i) {
+            setTimeout(function () {
+                update(i);
+            }, i * 10);
+        }
+
+        function update(angle) {
+            ctx.clearRect(0, 0, 200, 200);
+            for (var i = 0; i < angle; i++) {
+                var x, y;
+
+                x = 100 + (100) * Math.cos(i * Math.PI / 180);
+                y = 100 + (100) * Math.sin(i * Math.PI / 180);
+                ctx.beginPath();
+                ctx.moveTo(100, 100);
+                ctx.lineTo(x, y);
+                ctx.lineWidth = 2;
+                ctx.strokeStyle = '#000';
+                ctx.stroke();
+            }
+        }
+
+    </script>
+</body>
+</html>

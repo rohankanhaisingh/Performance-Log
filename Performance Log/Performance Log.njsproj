@@ -1,0 +1,242 @@
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">14.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+    <Name>Performance Log</Name>
+    <RootNamespace>Performance Log</RootNamespace>
+    <EnableTypeScript>true</EnableTypeScript>
+    <TypeScriptSourceMap>true</TypeScriptSourceMap>
+    <TypeScriptModuleKind>CommonJS</TypeScriptModuleKind>
+  </PropertyGroup>
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>00011f02-9f6d-4d1a-8548-7e2e0c560bfe</ProjectGuid>
+    <ProjectHome>.</ProjectHome>
+    <StartupFile>app.js</StartupFile>
+    <StartWebBrowser>False</StartWebBrowser>
+    <SearchPath>
+    </SearchPath>
+    <WorkingDirectory>.</WorkingDirectory>
+    <OutputPath>.</OutputPath>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <ProjectTypeGuids>{3AF33F2E-1136-4D97-BBB7-1795711AC8B8};{9092AA53-FB77-4645-B42D-1CCCA6BD08BD}</ProjectTypeGuids>
+    <StartWebBrowser>false</StartWebBrowser>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <DebugSymbols>true</DebugSymbols>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+    <DebugSymbols>true</DebugSymbols>
+  </PropertyGroup>
+  <ItemGroup>
+    <Content Include="app.js" />
+    <Content Include="app.old.js">
+      <SubType>Code</SubType>
+    </Content>
+    <Content Include="package.json" />
+    <Content Include="README.md" />
+    <Content Include="server\js\settingsHandler.js">
+      <SubType>Code</SubType>
+    </Content>
+    <Content Include="server\js\request.js">
+      <SubType>Code</SubType>
+    </Content>
+    <Content Include="server\js\systeminfo.js">
+      <SubType>Code</SubType>
+    </Content>
+    <Content Include="server\js\temperature.ps1" />
+    <Content Include="static\js\energy\index.js">
+      <SubType>Code</SubType>
+      <TestFramework>ExportRunner</TestFramework>
+    </Content>
+    <Content Include="static\js\energy\socketHandler.js">
+      <SubType>Code</SubType>
+    </Content>
+    <Content Include="static\js\settings\index.js">
+      <SubType>Code</SubType>
+    </Content>
+    <Content Include="static\js\settings\socketHandler.js" />
+    <Content Include="static\style\single.energy.css">
+      <SubType>Code</SubType>
+    </Content>
+    <Content Include="static\style\single.settings.css">
+      <SubType>Code</SubType>
+    </Content>
+    <Content Include="static\user\settings.json">
+      <SubType>Code</SubType>
+    </Content>
+    <Content Include="static\fonts\atures.ttf" />
+    <Content Include="static\fonts\black.ttf" />
+    <Content Include="static\fonts\Chopsic-K6Dp.ttf" />
+    <Content Include="static\fonts\EuclidCircularB-Regular.otf" />
+    <Content Include="static\fonts\fools.otf" />
+    <Content Include="static\fonts\fools_errand.otf" />
+    <Content Include="static\fonts\geforce_bold-webfont.woff" />
+    <Content Include="static\fonts\HallowenInline.otf" />
+    <Content Include="static\fonts\HallowenInline.ttf" />
+    <Content Include="static\fonts\HallowenInlineFree.png" />
+    <Content Include="static\fonts\High Tide Bold.otf" />
+    <Content Include="static\fonts\HighTide.otf" />
+    <Content Include="static\fonts\HighTideSans.otf" />
+    <Content Include="static\fonts\index.css">
+      <SubType>Code</SubType>
+    </Content>
+    <Content Include="static\fonts\MonospaceBold-zmP0.ttf" />
+    <Content Include="static\fonts\MonospaceOblique-5meB.ttf" />
+    <Content Include="static\fonts\MonospaceRegular-6ZWg.ttf" />
+    <Content Include="static\fonts\Montserrat.woff2" />
+    <Content Include="static\fonts\Notes.txt" />
+    <Content Include="static\fonts\OpenSans.woff2" />
+    <Content Include="static\fonts\outline-two.otf" />
+    <Content Include="static\fonts\poiret-one.ttf" />
+    <Content Include="static\fonts\PoiretOne.ttf" />
+    <Content Include="static\fonts\Roboto-Black.ttf" />
+    <Content Include="static\fonts\Roboto-BlackItalic.ttf" />
+    <Content Include="static\fonts\Roboto-Bold.ttf" />
+    <Content Include="static\fonts\Roboto-BoldItalic.ttf" />
+    <Content Include="static\fonts\Roboto-Italic.ttf" />
+    <Content Include="static\fonts\Roboto-Light.ttf" />
+    <Content Include="static\fonts\Roboto-LightItalic.ttf" />
+    <Content Include="static\fonts\Roboto-Medium.ttf" />
+    <Content Include="static\fonts\Roboto-MediumItalic.ttf" />
+    <Content Include="static\fonts\Roboto-Regular.ttf" />
+    <Content Include="static\fonts\Roboto-Thin.ttf" />
+    <Content Include="static\fonts\Roboto-ThinItalic.ttf" />
+    <Content Include="static\fonts\RobotoCondensed-Bold.ttf" />
+    <Content Include="static\fonts\RobotoCondensed-BoldItalic.ttf" />
+    <Content Include="static\fonts\RobotoCondensed-Italic.ttf" />
+    <Content Include="static\fonts\RobotoCondensed-Light.ttf" />
+    <Content Include="static\fonts\RobotoCondensed-LightItalic.ttf" />
+    <Content Include="static\fonts\RobotoCondensed-Regular.ttf" />
+    <Content Include="static\fonts\RobotoMono-Bold.ttf" />
+    <Content Include="static\fonts\RobotoMono-BoldItalic.ttf" />
+    <Content Include="static\fonts\RobotoMono-Italic.ttf" />
+    <Content Include="static\fonts\RobotoMono-Light.ttf" />
+    <Content Include="static\fonts\RobotoMono-LightItalic.ttf" />
+    <Content Include="static\fonts\RobotoMono-Medium.ttf" />
+    <Content Include="static\fonts\RobotoMono-MediumItalic.ttf" />
+    <Content Include="static\fonts\RobotoMono-Regular.ttf" />
+    <Content Include="static\fonts\RobotoMono-Thin.ttf" />
+    <Content Include="static\fonts\RobotoMono-ThinItalic.ttf" />
+    <Content Include="static\fonts\Rockout.ttf" />
+    <Content Include="static\fonts\ScaryHalloween.ttf" />
+    <Content Include="static\fonts\scary_halloween.zip" />
+    <Content Include="static\fonts\VeganAbattoir.otf" />
+    <Content Include="static\fonts\WhitneyMedium.woff" />
+    <Content Include="server\messages\ERRORCODE_NOMEMORY.vbs" />
+    <Content Include="server\messages\SERVER_DISCONNECT.vbs">
+      <SubType>Code</SubType>
+    </Content>
+    <Content Include="server\messages\SERVER_NORESPONSE.vbs" />
+    <Content Include="static\icons\icon_arrowleft.png" />
+    <Content Include="static\icons\icon_arrowright.png" />
+    <Content Include="static\icons\icon_moon.png" />
+    <Content Include="static\icons\icon_ping.png" />
+    <Content Include="static\icons\icon_temprature.png" />
+    <Content Include="static\icons\icon_dashboard.png" />
+    <Content Include="static\icons\icon_battery.png" />
+    <Content Include="static\icons\icon_global.png" />
+    <Content Include="static\icons\icon_commandline.png" />
+    <Content Include="static\icons\icon_settings.png" />
+    <Content Include="static\icons\icon_refresh.png" />
+    <Content Include="static\js\fireview\debug.js" />
+    <Content Include="static\js\fireview\fireview.css" />
+    <Content Include="static\js\fireview\index.js" />
+    <Content Include="static\js\fireview\modules\audio\effects\gain.js" />
+    <Content Include="static\js\fireview\modules\audio\effects\reverb.js" />
+    <Content Include="static\js\fireview\modules\audio\index.js" />
+    <Content Include="static\js\fireview\modules\draw.js" />
+    <Content Include="static\js\fireview\modules\effects\lightsource.js" />
+    <Content Include="static\js\fireview\modules\effects\particle.js" />
+    <Content Include="static\js\fireview\modules\htmlelements.js" />
+    <Content Include="static\js\fireview\modules\keyboard_event.js" />
+    <Content Include="static\js\fireview\modules\mouse.js" />
+    <Content Include="static\js\fireview\modules\objects.js" />
+    <Content Include="static\js\fireview\modules\shapes\blob.js" />
+    <Content Include="static\js\fireview\modules\shapes\circle.js" />
+    <Content Include="static\js\fireview\modules\shapes\customShape.js" />
+    <Content Include="static\js\fireview\modules\shapes\rectangle.js" />
+    <Content Include="static\js\fireview\modules\shapes\square.js" />
+    <Content Include="static\js\fireview\modules\shapes\triangle.js" />
+    <Content Include="static\js\fireview\modules\stcu\connect.js" />
+    <Content Include="static\js\fireview\modules\stcu\connectionHandler.js" />
+    <Content Include="static\js\fireview\modules\stcu\generate.js" />
+    <Content Include="static\js\fireview\modules\uniqueID.js" />
+    <Content Include="static\js\g.js" />
+    <Content Include="static\js\genuine.js" />
+    <Content Include="static\js\static.essentials.js">
+      <SubType>Code</SubType>
+    </Content>
+    <Content Include="static\js\jquery.js" />
+    <Content Include="static\js\main\canvascontext.js">
+      <SubType>Code</SubType>
+    </Content>
+    <Content Include="static\js\main\sockethandler.js">
+      <SubType>Code</SubType>
+    </Content>
+    <Content Include="static\js\main\index.js">
+      <SubType>Code</SubType>
+    </Content>
+    <Content Include="static\style\index.css">
+      <SubType>Code</SubType>
+    </Content>
+    <Content Include="static\style\static.background.css">
+      <SubType>Code</SubType>
+    </Content>
+    <Content Include="static\style\static.navbar.css">
+      <SubType>Code</SubType>
+    </Content>
+    <Content Include="static\style\static.tab.css">
+      <SubType>Code</SubType>
+    </Content>
+    <Content Include="static\style\static.stickytopnav.css">
+      <SubType>Code</SubType>
+    </Content>
+    <Content Include="static\style\static.loader.css">
+      <SubType>Code</SubType>
+    </Content>
+    <Content Include="static\style\temperature.css">
+      <SubType>Code</SubType>
+    </Content>
+    <Content Include="static\videos\video_smoke_50fCaDVaVT3P.mp4" />
+    <Content Include="static\videos\video_smoke_e8VnfRp1v7QL.mp4" />
+    <Content Include="static\view\index.html">
+      <SubType>Code</SubType>
+    </Content>
+    <Content Include="static\view\energy.html">
+      <SubType>Code</SubType>
+    </Content>
+    <Content Include="static\view\settings.html">
+      <SubType>Code</SubType>
+    </Content>
+    <Content Include="static\view\test.meter.html">
+      <SubType>Code</SubType>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="server\" />
+    <Folder Include="server\js\" />
+    <Folder Include="static\js\energy\" />
+    <Folder Include="static\js\settings\" />
+    <Folder Include="static\user\" />
+    <Folder Include="static\js\" />
+    <Folder Include="server\messages\" />
+    <Folder Include="static\fonts\" />
+    <Folder Include="static\icons\" />
+    <Folder Include="static\js\fireview\" />
+    <Folder Include="static\js\fireview\modules\" />
+    <Folder Include="static\js\fireview\modules\audio\" />
+    <Folder Include="static\js\fireview\modules\audio\effects\" />
+    <Folder Include="static\js\fireview\modules\effects\" />
+    <Folder Include="static\js\fireview\modules\shapes\" />
+    <Folder Include="static\js\fireview\modules\stcu\" />
+    <Folder Include="static\js\main\" />
+    <Folder Include="static\videos\" />
+    <Folder Include="static\style\" />
+    <Folder Include="static\view\" />
+    <Folder Include="static\" />
+  </ItemGroup>
+  <Import Project="$(VSToolsPath)\Node.js Tools\Microsoft.NodejsToolsV2.targets" />
+</Project>

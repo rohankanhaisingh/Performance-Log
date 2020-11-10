@@ -1,0 +1,227 @@
+.tab-fluid-energy.single-energy {
+    width: 100%;
+    height: 600px;
+}
+
+.big-battery-container {
+    width: 40%;
+    height: 100%;
+    float: left;
+    position: relative;
+}
+
+.big-battery {
+    width: 320px;
+    height: 100%;
+    border-radius: 70px;
+    position: relative;
+    background: none;
+    content: "";
+    overflow: hidden;
+}
+
+.battery-level {
+    width: 100%;
+    height: 0%;
+    background: none;
+    backdrop-filter: invert(1);
+    background: #ff6868;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    z-index: 1;
+    -moz-transition: height 2s ease;
+    -o-transition: height 2s ease;
+    -webkit-transition: height 2s ease;
+    transition: height 2s ease;
+}
+
+.battery-level-waves {
+    position: relative;
+}
+
+.battery-level-fixedbg {
+    width: 100%;
+    height: 600px;
+    position: absolute;
+    background: #fff;
+    left: 0;
+    top: -600px;
+}
+
+.battery-level-waves-wave {
+    width: 440px;
+    height: 440px;
+    position: absolute;
+    border-radius: 45%;
+    background: #fff;
+    left: -60px;
+    top: -420px;
+    -moz-animation: battery-level-waves-wave-animation 10s ease infinite;
+    -o-animation: battery-level-waves-wave-animation 10s ease infinite;
+    -webkit-animation: battery-level-waves-wave-animation 10s ease infinite;
+    animation: battery-level-waves-wave-animation 10s ease infinite;
+}
+
+@keyframes battery-level-waves-wave-animation {
+    0% {
+        -moz-transform: rotate(0deg);
+        -ms-transform: rotate(0deg);
+        -o-transform: rotate(0deg);
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+    100% {
+        -moz-transform: rotate(360deg);
+        -ms-transform: rotate(360deg);
+        -o-transform: rotate(360deg);
+        -webkit-transform: rotate(360deg);
+        transform: rotate(360deg);
+    }
+}
+
+.battery-level-waves-wave:nth-child(2) {
+    background: rgba(255, 255, 255, 0.69);
+    border-radius: 35%;
+}
+
+.battery-overlay {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 2;
+}
+
+.battery-overlay-header {
+    width: 100%;
+    height: 50%;
+}
+
+.battery-overlay-header-percentage {
+    width: 100px;
+    height: 60px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 1;
+    text-align: center;
+    margin: auto;
+}
+
+    .battery-overlay-header-percentage span {
+        font-family: EuclidCircularB;
+        font-size: 40px;
+        user-select: none;
+        color: #000000;
+    }
+
+.battery-info {
+    width: 60%;
+    height: 100%;
+    float: left;
+}
+
+.battery-info-title {
+    width: 100%;
+    height: 50px;
+
+}
+
+    .battery-info-title span {
+        display: inline-block;
+        font-family: Montserrat;
+        color: #000000;
+        margin-top: 11px;
+        font-size: 21px;
+        user-select: none;
+    }
+
+.battery-info-hl {
+    width: 120px;
+    height: 1px;
+    background: #656565;
+    margin: 20px 0px;
+}
+
+.battery-info-list {
+    width: 100%;
+    height: calc(100% - 80px);
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+.battery-info-list-item {
+    width: calc(100% - 25px);
+    height: 30px;
+    padding: 10px 0px;
+    border: none;
+    border-left: 5px double transparent;
+    padding-left: 20px;
+    -moz-transition: all 0.3s ease;
+    -o-transition: all 0.3s ease;
+    -webkit-transition: all 0.3s ease;
+    transition: all 0.3s ease;
+}
+
+    .battery-info-list-item:hover {
+        border-left: 5px double #ff6868;
+    }
+
+.battery-info-list-item-title {
+    width: auto;
+    height: auto;
+    float: left;
+    margin-top: 5px;
+}
+
+    .battery-info-list-item-title span {
+        font-family: Montserrat;
+        color: #000000;
+        font-size: 13px;
+    }
+
+.battery-info-list-item-value {
+    width: auto;
+    height: auto;
+    float: left;
+    margin-left: 20px;
+    margin-top: 5px;
+}
+
+.battery-info-list-item-value span {
+    font-family: RobotoLight;
+    color: #000000;
+    font-size: 14px;
+}
+
+.app.theme-dark .battery-level {
+    background: none;
+}
+
+.app.theme-dark .battery-level-waves-wave {
+    background: #000;
+}
+
+.app.theme-dark .battery-level-waves-wave:nth-child(2) {
+    background: rgba(0, 0, 0, .4);
+}
+
+.app.theme-dark .battery-level-fixedbg {
+    background: #000;
+}
+
+.app.theme-dark .battery-overlay-header-percentage span {
+    color: #ff6868;
+}
+
+.app.theme-dark .battery-info-title span {
+    color: #fff;
+}
+
+.app.theme-dark .battery-info-list-item-title span, .app.theme-dark .battery-info-list-item-value span {
+    color: #fff;
+}

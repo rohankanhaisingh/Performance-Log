@@ -1,0 +1,36 @@
+/* Static background */
+
+.app-background {
+    width: 100vw;
+    height: 100vh;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+}
+
+.static-background-container {
+    overflow-x: hidden;
+    overflow-y: hidden;
+}
+
+.background-header {
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+.background-header video {
+    width: 100%;
+    height: 100%;
+    object-fit: fill;
+}
+
+    .background-header.background-01 {
+        background: #ffffff;
+        /*background: url(https://image.winudf.com/v2/image/Y29tLnNwYWNld2FsbHBhcGVyLmhkLnNwYWNlcGljdHVyZXMucGhvdG9zLmJhY2tncm91bmQuY3V0ZS5jb29sLmFydC5zcGFjZWltYWdlcy5oZC5mcmVlX3NjcmVlbl80XzE1MzMwMjU1NDNfMDQy/screen-4.jpg?fakeurl=1&type=.jpg);*/
+    }
+
+    .background-header.background-02 {
+        background: rgba(255, 255, 255, 0.50);
+    }
