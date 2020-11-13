@@ -1,0 +1,229 @@
+.commandline-container.single-commandline {
+	width: 100%;
+	height: 100%;
+	background: #0c0c0c;
+	position: relative;
+}
+
+.commandline-output {
+	width: 100%;
+	height: calc(100% - 70px);
+	display: block;
+}
+
+.commandline-output .container {
+	width: 100%;
+	height: 100%;
+	overflow-x: hidden;
+	overflow-y: auto;
+}
+
+.commandline-output-line {
+    width: 100%;
+    height: auto;
+    min-height: 30px;
+    padding: 5px 0px;
+    position: relative;
+    display: block;
+    -moz-animation: commandline-output-line-fadein 0.3s ease;
+    -o-animation: commandline-output-line-fadein 0.3s ease;
+    -webkit-animation: commandline-output-line-fadein 0.3s ease;
+    animation: commandline-output-line-fadein 0.3s ease;
+}
+
+@keyframes commandline-output-line-fadein {
+	0% {
+		opacity: 0;
+	} 
+	100% {
+		opacity: 1;
+	}
+}
+
+.commandline-output-line-cll-le {
+	width: 90px;
+	height: 30px;
+	float: left;
+	padding: 0px 5px;
+	position: relative;
+	content: "";
+}
+
+	.commandline-output-line-cll-le:before {
+		width: 5px;
+		height: 5px;
+		border-radius: 50%;
+		content: "";
+		position: absolute;
+		top: 0;
+		bottom: 0;
+		margin: auto;
+		right: 25px;
+		background: transparent;
+	}
+
+.commandline-output-line-cll-le-type {
+	width: 65px;
+	height: 100%;
+	float: left;
+	text-align: right;
+	margin-right: 5px;
+}
+
+	.commandline-output-line-cll-le-type span {
+		font-family: monospace;
+		color: #fff;
+		font-size: 14px;
+		display: inline-block;
+		margin-top: 6px;
+		line-height: 20px;
+	}
+
+.commandline-output-line-cll-le-icon {
+	width: 15px;
+	height: 15px;
+	float: right;
+	margin-top: 7px;
+}
+
+.commandline-output-line-cll-le-icon img {
+	width: 100%;
+	height: 100%;
+	pointer-events: none;
+	user-select: none;
+}
+
+.commandline-output-line-cll-ri {
+	width: calc(100% - 110px);
+	height: auto;
+	min-height: 30px;
+	margin-left: 10px;
+	float: left;
+	word-break: break-word;
+	display: contents;
+}
+
+	.commandline-output-line-cll-ri span {
+		font-family: monospace;
+		color: #fff;
+		display: inline-block;
+		font-size: 13px;
+		margin-top: 7px;
+	}
+
+		.commandline-output-line-cll-ri span textarea {
+			width: 550px;
+			height: 400px;
+			resize: none;
+			background: #101010;
+			outline: none;
+			border: none;
+			color: #fff;
+			font-family: monospace;
+			padding: 10px;
+			border-radius: 30px;
+		}
+
+		code.pl-command-string {
+			color: #ff6d6d;
+		}
+
+code.pl-command-string:hover {
+	text-decoration: underline;
+}
+code.pl-command-class {
+	color: #3b6fff;
+}
+code.pl-log-error {
+	color: #ff0000;
+	font-weight: 900;
+}
+code.pl-command {
+	color: #ffe9b4
+}
+code.pl-command-arg {
+	color: #78ffff;
+}
+code.json-property {
+	color: #e6c057;
+}
+code.json-value {
+	color: #e56054;
+}
+
+.commandline-output-line.line-output .commandline-output-line-cll-le:before { 
+	background: #101010;                            
+}
+
+.commandline-output-line.line-error {
+	-moz-animation: commandline-output-line-error-fadein .5s ease;
+	-o-animation: commandline-output-line-error-fadein .5s ease;
+	-webkit-animation: commandline-output-line-error-fadein .5s ease;
+	animation: commandline-output-line-error-fadein .5s ease;
+	background: #230000;
+}
+
+	.commandline-output-line.line-error.blink .commandline-output-line-cll-le:before {
+		-moz-animation: line-error-blink .5s ease infinite;
+		-o-animation: line-error-blink .5s ease infinite;
+		-webkit-animation: line-error-blink .5s ease infinite;
+		animation: line-error-blink .5s ease infinite;
+	}
+
+@keyframes line-error-blink {
+	0% {
+		background: transparent;
+	}
+	50% {
+		background: #ff2c2c;
+	}
+	100% {
+		background: transparent;
+	}
+}
+
+@keyframes commandline-output-line-error-fadein {
+	0% {
+		background: #ff2c2c;
+	}
+	100% {
+		background: #230000;
+	}
+}
+
+.commandline-input {
+	width: 100%;
+	height: 70px;
+	position: relative;
+	display: block;
+	content: "";
+	user-select: none;
+}
+
+.commandline-input-textfield {
+	width: 80%;
+	height: 20px;
+	float: left;
+	margin-left: 20px;
+	margin-top: 10px;
+	background: #191919;
+	border-radius: 30px;
+	padding: 15px;
+	white-space: nowrap;
+	border: 1px solid transparent;
+	-moz-transition: all 0.3s ease;
+	-o-transition: all 0.3s ease;
+	-webkit-transition: all 0.3s ease;
+	transition: all 0.3s ease;
+}
+
+	.commandline-input-textfield .commandline-input-textfield-ce {
+		width: 100%;
+		height: 100%;
+		font-family: monospace;
+		color: #fff;
+		font-size: 13px;
+		display: inline-block;
+		margin-top: 2px;
+		white-space: nowrap;
+	}

@@ -29,7 +29,7 @@
     <link href="../style/index.css" rel="stylesheet" type="text/css" />
 
     <!-- Specific stylesheets -->
-    <link href="../style/single.settings.css" rel="stylesheet" type="text/css" />
+    <link href="../style/single.commandline.css" rel="stylesheet" type="text/css" />
 
     <!-- Static stylesheets -->
     <link href="../style/static.background.css" rel="stylesheet" type="text/css" />
@@ -126,7 +126,6 @@
                             </div>
                         </div>
                     </div>
-
                     <div class="app-main">
                         <div class="app-navbar static-navbar">
                             <div class="container">
@@ -163,7 +162,7 @@
                                             <span>NETWORK</span>
                                         </div>
                                     </div>
-                                    <div class="navbar-button" button-action="requestPage:commandline">
+                                    <div class="navbar-button active" button-action="requestPage:commandline">
                                         <div class="navbar-button-icon">
                                             <img src="../icons/icon_commandline.png" style="" />
                                         </div>
@@ -171,7 +170,7 @@
                                             <span>COMMAND LINE</span>
                                         </div>
                                     </div>
-                                    <div class="navbar-button active">
+                                    <div class="navbar-button" button-action="requestPage:settings">
                                         <div class="navbar-button-icon">
                                             <img src="../icons/icon_settings.png" style="" />
                                         </div>
@@ -183,26 +182,31 @@
                             </div>
                         </div>
                         <div class="app-tabs static-tabs">
-                            <div class="tab tab-settings tab-main" tab-name="settings">
-                                <div class="tab-fluid tabtitle">
-                                    <div class="tab-tabtitle">
-                                        <span>SETTINGS</span>
-                                    </div>
-                                    <div class="tab-tabtitle-hl"></div>
-                                </div>
-                                <div class="tab-fluid single-settings">
-                                    <div class="settings-group">
-                                        <div class="settings-item toggle">
-                                            <div class="settings-item-name">
-                                                <span>DEVELOPERMODE</span>
+                            <div class="container">
+                                <div class="tab tab-commandline tab-main" tab-name="commandline">
+                                    <div class="commandline-container single-commandline">
+                                        <div class="container">
+                                            <div class="commandline-output">
+                                                <div class="container">
+                                                    <!-- Command output lines goes here -->
+
+                                                    <div class="commandline-output-line">
+                                                        <div class="commandline-output-line-cll-ri">
+                                                            <span>Performance-Log Commandline by Rohan Kanhaisingh. Performance-Log version 0.4</span>
+                                                        </div>
+                                                    </div>
+                                                    <div class="commandline-output-line">
+                                                        <div class="commandline-output-line-cll-ri">
+                                                            <span>Enter <code class="pl-command-string">"Help"</code> for the help guide. Enter "<code class="pl-command-string">Help</code> <code class="pl-command-class">&lt;Command&gt;</code>" for more information about a specific command. Thanks for using Performance-Log.</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
                                             </div>
-                                            <div class="settings-item-toggle developerMode" toggle-name="developermode" toggle-value="false"></div>
-                                        </div>
-                                        <div class="settings-item toggle">
-                                            <div class="settings-item-name">
-                                                <span>DARK THEME</span>
+                                            <div class="commandline-input">
+                                                <div class="commandline-input-textfield">
+                                                    <div class="commandline-input-textfield-ce" contenteditable="true" spellcheck="false">Get-Object Memory</div>
+                                                </div>
                                             </div>
-                                            <div class="settings-item-toggle theme" toggle-name="darktheme" toggle-value="false"></div>
                                         </div>
                                     </div>
                                 </div>
@@ -216,9 +220,9 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.3.0/socket.io.js"></script>
     <script src="../js/g.js"></script>
-    <script>$g = g.Selector, $ga = g.All; $gnoti = g.Notification; $gxhr = g.XHLoad; $gcreat = g.CreateElement; $alert = g.Alert;</script>
+    <script>$g = g.Selector, $ga = g.All; $gnoti = g.Notification; $gxhr = g.XHRLoad;</script>
     <script src="../js/jquery.js"></script>
-    <script src="../js/settings/index.js" type="module"></script>
+    <script src="../js/commandline/index.js" type="module"></script>
     <script src="../js/static.essentials.js" type="module"></script>
 </body>
 </html>

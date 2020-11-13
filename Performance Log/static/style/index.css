@@ -8,21 +8,11 @@ a, abbr, acronym, address, applet, b, big, blockquote, body, button, caption, ce
 }
 
 :root {
-    --bg-dark: #1d1d1d;
-    --background-color: var(--google-gray-900);
-    --error-code-color: var(--google-gray-500);
-    --heading-color: var(--google-gray-500);
-    --link-color: var(--google-blue-300);
+    --background-dark: #1d1d1d;
+    --background-bright: #fff;
+    --fireview-dark-hover: #4a4a4a;
     --primary-button-fill-color-active: rgb(129, 162, 208);
-    --primary-button-fill-color: var(--google-blue-300);
-    --primary-button-text-color: var(--google-gray-900);
-    --quiet-background-color: var(--background-color);
-    --secondary-button-border-color: var(--google-gray-700);
-    --secondary-button-fill-color: var(--google-gray-900);
     --secondary-button-hover-fill-color: rgb(48, 51, 57);
-    --secondary-button-text-color: var(--google-blue-300);
-    --small-link-color: var(--google-blue-300);
-    --text-color: var(--google-gray-500);
     --edge-black: #FFFFFF;
     --edge-focus-color: #888;
     --edge-blue-hover: #0070C6;

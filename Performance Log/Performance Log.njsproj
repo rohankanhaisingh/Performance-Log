@@ -46,7 +46,29 @@
     <Content Include="server\js\systeminfo.js">
       <SubType>Code</SubType>
     </Content>
-    <Content Include="server\js\temperature.ps1" />
+    <Content Include="server\ps1\gpu.ps1" />
+    <Content Include="server\ps1\temp.ps1" />
+    <Content Include="static\js\commandline\index.js">
+      <SubType>Code</SubType>
+    </Content>
+    <Content Include="static\js\commandline\modules\commands\GetObject.js">
+      <SubType>Code</SubType>
+    </Content>
+    <Content Include="static\js\commandline\modules\commands\ReadFile.js">
+      <SubType>Code</SubType>
+    </Content>
+    <Content Include="static\js\commandline\modules\inputHandler.js">
+      <SubType>Code</SubType>
+    </Content>
+    <Content Include="static\js\commandline\modules\plCommandHandler.js">
+      <SubType>Code</SubType>
+    </Content>
+    <Content Include="static\js\commandline\modules\output.js">
+      <SubType>Code</SubType>
+    </Content>
+    <Content Include="static\js\commandline\socketHandler.js">
+      <SubType>Code</SubType>
+    </Content>
     <Content Include="static\js\energy\index.js">
       <SubType>Code</SubType>
       <TestFramework>ExportRunner</TestFramework>
@@ -58,6 +80,9 @@
       <SubType>Code</SubType>
     </Content>
     <Content Include="static\js\settings\socketHandler.js" />
+    <Content Include="static\style\single.commandline.css">
+      <SubType>Code</SubType>
+    </Content>
     <Content Include="static\style\single.energy.css">
       <SubType>Code</SubType>
     </Content>
@@ -208,6 +233,9 @@
     <Content Include="static\view\energy.html">
       <SubType>Code</SubType>
     </Content>
+    <Content Include="static\view\commandline.html">
+      <SubType>Code</SubType>
+    </Content>
     <Content Include="static\view\settings.html">
       <SubType>Code</SubType>
     </Content>
@@ -218,7 +246,12 @@
   <ItemGroup>
     <Folder Include="server\" />
     <Folder Include="server\js\" />
+    <Folder Include="server\g\" />
+    <Folder Include="server\ps1\" />
+    <Folder Include="static\js\commandline\modules\" />
+    <Folder Include="static\js\commandline\modules\commands\" />
     <Folder Include="static\js\energy\" />
+    <Folder Include="static\js\commandline\" />
     <Folder Include="static\js\settings\" />
     <Folder Include="static\user\" />
     <Folder Include="static\js\" />

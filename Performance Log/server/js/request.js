@@ -37,6 +37,15 @@ function init(socket) {
                     time: Date.now(),
                     message: "Page has been requested"
                 });
+                break;
+            case "commandline":
+                page = data.page;
+                socket.emit("acceptPageRequest", {
+                    page: data.page,
+                    time: Date.now(),
+                    message: "Page has been requested"
+                });
+                break;
             default:
                 socket.emit("deniedPageRequest", {
                     time: Date.now(),
@@ -68,6 +77,16 @@ function init(socket) {
                     })
                     break;
             }
+        }
+    });
+
+    socket.on("getobject", function (a) {
+        switch (a.type) {
+            case "mem":
+                systeminfo.ram.initialize(function (b) {
+                    socket.emit("getobject:accept", { type: "mem", data: b, get: a.get});
+                });
+                break;
         }
     });
 

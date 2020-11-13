@@ -8,3 +8,9 @@ function Get-Temperature {
 
     return $currentTempCelsius.ToString() + " C : " + $currentTempFahrenheit.ToString() + " F : " + $currentTempKelvin + "K"  
 }
+
+
+
+function Test {
+    return wmic 
+}
