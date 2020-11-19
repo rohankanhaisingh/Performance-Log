@@ -1,4 +1,4 @@
-#Performance Log by Rohan Kanhaisingh
+# Performance Log by Rohan Kanhaisingh
 
 Performance Log by Rohan Kanhaising Copyright 2020.
 
@@ -10,7 +10,9 @@ NOTE: This project requires the latest NodeJS version!!
 -----------------------------------
 
 
-#How does it work?
+## How does it work?
+
+Performance Log is a application that runs on NodeJS, so make sure you have NodeJS installed. You also need Visual Studio to open this solution.
 
 When you launch open the batch file, run.bat, it will open a NodeJS server and it will start the webpage for you. You will 
 be directed to the performance page (basically the index page). 
@@ -29,18 +31,19 @@ properties by yourself. Keep in mind that you have errors in the document (setti
 ----------------------------------
 
 
-#New in version 0.3:
+## New in version 0.5.1:
 
-	- Added 2 new pages; Energy usage and settings.
-	- Fixed some server stuff.
-	- Changed the background video again for dark theme users.
+	- Rewrote some code.
+	- Added a lot of notes into some js documents, to let the user see what the code does.
+	- Added a lot of new features in the new commandline page.
+	- This app is just amazing by itself.
 
 
-#Ideas in mind that might come into the project:
+## Ideas in mind that might come into the project (I am working on this):
 	- Ability to launch games from the page.
-	- Ability to control the dekstop from the page (command line).
+	- Ability to control and host a dedicated Minecraft Server.
+	- Ability to control and host a dedicated Web server.
 	- Fixing bugs (that will always be a feauture).
-	- A card for the GPU unit (need alot of time working on this).
 
 CREDITS: The background video's you see are from Pexels videos.
 
