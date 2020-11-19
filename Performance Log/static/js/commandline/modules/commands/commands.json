@@ -1,0 +1,54 @@
+{
+  "Help": {
+    "description": "List the help guide for every single command",
+    "commandListItems": [
+      "Help",
+      "Help ReadFile",
+      "Help Execute",
+      "Help Get-Object",
+      "Help Powershell",
+      "Help Help"
+    ]
+  },
+  "Get-Object": {
+    "description": "This Performance-Log command allows to receive specific hardware information.",
+    "arguments": [ "Get [path]" ],
+    "example": "<code class='pl-command'>Get-Object Memory -Get<code class='pl-command-string'> &quot;available&quot;",
+    "commandListItems": [
+      "Get-Object Memory -Get &quot;json property&quot;",
+      "Get-Object Disk -Get &quot;json property&quot;",
+      "Get-Object Processor -Get &quot;json property&quot;"
+    ]
+  },
+  "ReadFile": {
+    "description": "This Performance-Log command allows to read a local file and return it into the commandline.",
+    "arguments": [ "Path [string]", "WriteTo [string]", "Parse", "Get [string]", "StoreAs [string]" ],
+    "example": "<code class='pl-command'>ReadFile  -Path <code class='pl-command-string'> &quot;../user/settings.json&quot;",
+    "commandListItems": [
+      "ReadFile -Path &quot;path to file here&quot;",
+      "ReadFile -Path &quot;path to file here&quot; -Parse -Get &quot;json property&quot;",
+      "ReadFile -Path &quot;path to file here&quot; -Parse -Get &quot;json property&quot; -StoreAs &quot;variable&quot;"
+    ]
+  },
+  "Execute": {
+    "description": "This Performance-Log command allows to run a executable function.",
+    "arguments": [ "Get [path]", "PhysicalMemory [string_noquotes]", "MaxPlayers [number]", "UseDiscordPresence", "CloseAll" ],
+    "example": "<code class='pl-command'>Execute MinecraftServer -MaxPlayers 10",
+    "commandListItems": [
+      "Execute MinecraftServer -MaxPlayers 10 -PhysicalMemory 2GB -UseDiscordPresence",
+      "Execute Webserver -Port 1234 -MaxConnections 20"
+    ]
+  },
+  "Powershell": {
+    "description": "Use the Powershell command line (NOT STABLE)",
+    "commandListItems": [
+      "Powershell"
+    ]
+  },
+  "Clear": {
+    "description": "Clears the console.",
+    "commandListItems": [
+      "Clear"
+    ]
+  }
+}

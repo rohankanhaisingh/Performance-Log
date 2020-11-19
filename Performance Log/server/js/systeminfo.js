@@ -1,3 +1,10 @@
+/*
+ *  Ehhhh yeah I am too lazy to explain what this script does. 
+ *  Basically, this document has many object with function to receive (with initializing) hardware information.
+ *  A function (callback) will be called when the information for a specific hardware unit has been received.
+ * 
+ */
+
 const si = require("systeminformation");
 const os = require("os");
 const cpuStat = require("cpu-stat");
@@ -72,6 +79,14 @@ const _battery = {
 
 const _all = {
     initialize: function (callback) {
+        /*
+         * Okay this looks complicated and it kinda is. This will call 3 functions to receive all information so far. The number a will increase whenever 
+         * the function has been called and also when the information got received. It will also call a other function to check if all the needed information has been received.
+         * If the number a is equal to 3, then it will call a function.
+         * 
+         * Yes sorry this sounds weird and it is, kinda. It works really good so yeah.
+        */
+
         if (typeof callback !== 'undefined') {
             var a = 0, b = {}, c, d, e;
 

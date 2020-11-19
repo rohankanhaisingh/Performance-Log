@@ -11,8 +11,13 @@ socket.emit("clientConnect", {
     id: socket.id,
 });
 
+
 var commandType = "performanceLog";
+
+function changeCommandType(a) {
+    commandType = a;
+}
 
 inputHandler.listen($g(".commandline-input-textfield-ce"));
 
-export { commandType, socket };
+export { commandType, socket, changeCommandType };

@@ -1,6 +1,6 @@
 {
   "name": "performance-log",
-  "version": "0.0.0",
+  "version": "0.4",
   "description": "Performance Log",
   "main": "app.js",
   "author": {
@@ -12,7 +12,8 @@
     "express": "^4.17.1",
     "os-utils": "0.0.14",
     "socket.io": "^2.3.0",
-    "systeminformation": "^4.27.11"
+    "systeminformation": "^4.30.1",
+	"discord-rich-presence": "1"
   },
   "devDependencies": {}
 }

@@ -37,6 +37,9 @@
     </Content>
     <Content Include="package.json" />
     <Content Include="README.md" />
+    <Content Include="server\js\discordPresence.js">
+      <SubType>Code</SubType>
+    </Content>
     <Content Include="server\js\settingsHandler.js">
       <SubType>Code</SubType>
     </Content>
@@ -46,12 +49,123 @@
     <Content Include="server\js\systeminfo.js">
       <SubType>Code</SubType>
     </Content>
+    <Content Include="server\mc\Bungeecord.bat" />
+    <Content Include="server\mc\BungeeCord\BungeeCord.jar" />
+    <Content Include="server\mc\BungeeCord\bungeecord.log" />
+    <Content Include="server\mc\BungeeCord\config.yml" />
+    <Content Include="server\mc\BungeeCord\locations.yml" />
+    <Content Include="server\mc\BungeeCord\modules.yml" />
+    <Content Include="server\mc\BungeeCord\modules\cmd_alert.jar" />
+    <Content Include="server\mc\BungeeCord\modules\cmd_find.jar" />
+    <Content Include="server\mc\BungeeCord\modules\cmd_list.jar" />
+    <Content Include="server\mc\BungeeCord\modules\cmd_send.jar" />
+    <Content Include="server\mc\BungeeCord\modules\cmd_server.jar" />
+    <Content Include="server\mc\BungeeCord\modules\reconnect_yaml.jar" />
+    <Content Include="server\mc\BungeeCord\proxy.log.0" />
+    <Content Include="server\mc\BungeeCord\proxy.log.0.1" />
+    <Content Include="server\mc\BungeeCord\proxy.log.0.1.lck" />
+    <Content Include="server\mc\BungeeCord\proxy.log.0.lck" />
+    <Content Include="server\mc\BungeeCord\start.bat" />
+    <Content Include="server\mc\Lobby.bat" />
+    <Content Include="server\mc\Lobby\banned-ips.json" />
+    <Content Include="server\mc\Lobby\banned-players.json" />
+    <Content Include="server\mc\Lobby\bukkit.yml" />
+    <Content Include="server\mc\Lobby\commands.yml" />
+    <Content Include="server\mc\Lobby\crash-reports\crash-2020-11-06_16.34.26-server.txt" />
+    <Content Include="server\mc\Lobby\eula.txt" />
+    <Content Include="server\mc\Lobby\help.yml" />
+    <Content Include="server\mc\Lobby\logs\2020-10-18-1.log.gz" />
+    <Content Include="server\mc\Lobby\logs\2020-10-18-2.log.gz" />
+    <Content Include="server\mc\Lobby\logs\2020-10-18-3.log.gz" />
+    <Content Include="server\mc\Lobby\logs\2020-10-23-1.log.gz" />
+    <Content Include="server\mc\Lobby\logs\2020-10-23-2.log.gz" />
+    <Content Include="server\mc\Lobby\logs\2020-11-06-1.log.gz" />
+    <Content Include="server\mc\Lobby\logs\2020-11-06-2.log.gz" />
+    <Content Include="server\mc\Lobby\logs\2020-11-06-3.log.gz" />
+    <Content Include="server\mc\Lobby\logs\2020-11-07-1.log.gz" />
+    <Content Include="server\mc\Lobby\logs\2020-11-07-2.log.gz" />
+    <Content Include="server\mc\Lobby\logs\2020-11-07-3.log.gz" />
+    <Content Include="server\mc\Lobby\logs\2020-11-07-4.log.gz" />
+    <Content Include="server\mc\Lobby\logs\2020-11-07-5.log.gz" />
+    <Content Include="server\mc\Lobby\logs\2020-11-08-1.log.gz" />
+    <Content Include="server\mc\Lobby\logs\2020-11-08-2.log.gz" />
+    <Content Include="server\mc\Lobby\logs\2020-11-09-1.log.gz" />
+    <Content Include="server\mc\Lobby\logs\2020-11-09-2.log.gz" />
+    <Content Include="server\mc\Lobby\logs\2020-11-09-3.log.gz" />
+    <Content Include="server\mc\Lobby\logs\2020-11-11-1.log.gz" />
+    <Content Include="server\mc\Lobby\logs\2020-11-11-2.log.gz" />
+    <Content Include="server\mc\Lobby\logs\2020-11-12-1.log.gz" />
+    <Content Include="server\mc\Lobby\logs\latest.log" />
+    <Content Include="server\mc\Lobby\ops.json" />
+    <Content Include="server\mc\Lobby\permissions.yml" />
+    <Content Include="server\mc\Lobby\plugins\AutoSaveWorld.jar" />
+    <Content Include="server\mc\Lobby\plugins\AutoSaveWorld\config.yml" />
+    <Content Include="server\mc\Lobby\plugins\AutoSaveWorld\configmsg.yml" />
+    <Content Include="server\mc\Lobby\plugins\PluginMetrics\config.yml" />
+    <Content Include="server\mc\Lobby\server.properties" />
+    <Content Include="server\mc\Lobby\spigot.jar" />
+    <Content Include="server\mc\Lobby\spigot.yml" />
+    <Content Include="server\mc\Lobby\spigot16.jar" />
+    <Content Include="server\mc\Lobby\start.bat" />
+    <Content Include="server\mc\Lobby\usercache.json" />
+    <Content Include="server\mc\Lobby\whitelist.json" />
+    <Content Include="server\mc\Lobby\world_nether\data\idcounts.dat" />
+    <Content Include="server\mc\Lobby\world_nether\data\map_0.dat" />
+    <Content Include="server\mc\Lobby\world_nether\data\map_1.dat" />
+    <Content Include="server\mc\Lobby\world_nether\data\map_2.dat" />
+    <Content Include="server\mc\Lobby\world_nether\data\map_3.dat" />
+    <Content Include="server\mc\Lobby\world_nether\data\map_4.dat" />
+    <Content Include="server\mc\Lobby\world_nether\data\map_5.dat" />
+    <Content Include="server\mc\Lobby\world_nether\data\map_6.dat" />
+    <Content Include="server\mc\Lobby\world_nether\data\map_7.dat" />
+    <Content Include="server\mc\Lobby\world_nether\data\raids.dat" />
+    <Content Include="server\mc\Lobby\world_nether\data\scoreboard.dat" />
+    <Content Include="server\mc\Lobby\world_nether\DIM-1\data\raids.dat" />
+    <Content Include="server\mc\Lobby\world_nether\DIM-1\data\raids_nether.dat" />
+    <Content Include="server\mc\Lobby\world_nether\DIM-1\region\r.-1.-1.mca" />
+    <Content Include="server\mc\Lobby\world_nether\DIM-1\region\r.-1.0.mca" />
+    <Content Include="server\mc\Lobby\world_nether\DIM-1\region\r.0.-1.mca" />
+    <Content Include="server\mc\Lobby\world_nether\DIM-1\region\r.0.0.mca" />
+    <Content Include="server\mc\Lobby\world_nether\level.dat" />
+    <Content Include="server\mc\Lobby\world_nether\level.dat_old" />
+    <Content Include="server\mc\Lobby\world_nether\session.lock" />
+    <Content Include="server\mc\Lobby\world_nether\uid.dat" />
+    <Content Include="server\mc\Lobby\world_the_end\data\idcounts.dat" />
+    <Content Include="server\mc\Lobby\world_the_end\data\map_0.dat" />
+    <Content Include="server\mc\Lobby\world_the_end\data\map_1.dat" />
+    <Content Include="server\mc\Lobby\world_the_end\data\map_2.dat" />
+    <Content Include="server\mc\Lobby\world_the_end\data\map_3.dat" />
+    <Content Include="server\mc\Lobby\world_the_end\data\map_4.dat" />
+    <Content Include="server\mc\Lobby\world_the_end\data\map_5.dat" />
+    <Content Include="server\mc\Lobby\world_the_end\data\map_6.dat" />
+    <Content Include="server\mc\Lobby\world_the_end\data\map_7.dat" />
+    <Content Include="server\mc\Lobby\world_the_end\data\raids.dat" />
+    <Content Include="server\mc\Lobby\world_the_end\data\scoreboard.dat" />
+    <Content Include="server\mc\Lobby\world_the_end\DIM1\data\raids_end.dat" />
+    <Content Include="server\mc\Lobby\world_the_end\DIM1\region\r.-1.-1.mca" />
+    <Content Include="server\mc\Lobby\world_the_end\DIM1\region\r.-1.0.mca" />
+    <Content Include="server\mc\Lobby\world_the_end\DIM1\region\r.0.-1.mca" />
+    <Content Include="server\mc\Lobby\world_the_end\DIM1\region\r.0.0.mca" />
+    <Content Include="server\mc\Lobby\world_the_end\level.dat" />
+    <Content Include="server\mc\Lobby\world_the_end\level.dat_old" />
+    <Content Include="server\mc\Lobby\world_the_end\session.lock" />
+    <Content Include="server\mc\Lobby\world_the_end\uid.dat" />
+    <Content Include="server\mc\ngrok.exe" />
     <Content Include="server\ps1\gpu.ps1" />
     <Content Include="server\ps1\temp.ps1" />
     <Content Include="static\js\commandline\index.js">
       <SubType>Code</SubType>
     </Content>
+    <Content Include="static\js\commandline\modules\commands\commands.json">
+      <SubType>Code</SubType>
+    </Content>
+    <Content Include="static\js\commandline\modules\commands\Execute.js">
+      <SubType>Code</SubType>
+    </Content>
     <Content Include="static\js\commandline\modules\commands\GetObject.js">
+      <SubType>Code</SubType>
+    </Content>
+    <Content Include="static\js\commandline\modules\commands\Help.js">
       <SubType>Code</SubType>
     </Content>
     <Content Include="static\js\commandline\modules\commands\ReadFile.js">
@@ -87,6 +201,9 @@
       <SubType>Code</SubType>
     </Content>
     <Content Include="static\style\single.settings.css">
+      <SubType>Code</SubType>
+    </Content>
+    <Content Include="static\user\discordPresence.json">
       <SubType>Code</SubType>
     </Content>
     <Content Include="static\user\settings.json">
@@ -225,6 +342,7 @@
     <Content Include="static\style\temperature.css">
       <SubType>Code</SubType>
     </Content>
+    <Content Include="static\user\test.pls" />
     <Content Include="static\videos\video_smoke_50fCaDVaVT3P.mp4" />
     <Content Include="static\videos\video_smoke_e8VnfRp1v7QL.mp4" />
     <Content Include="static\view\index.html">
@@ -242,11 +360,35 @@
     <Content Include="static\view\test.meter.html">
       <SubType>Code</SubType>
     </Content>
+    <Content Include="test.bungee.bat" />
+    <Content Include="test.ngrok.bat" />
+    <Content Include="test.spigot.bat" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="server\" />
     <Folder Include="server\js\" />
-    <Folder Include="server\g\" />
+    <Folder Include="server\mc\" />
+    <Folder Include="server\mc\BungeeCord\" />
+    <Folder Include="server\mc\BungeeCord\modules\" />
+    <Folder Include="server\mc\BungeeCord\plugins\" />
+    <Folder Include="server\mc\Lobby\" />
+    <Folder Include="server\mc\Lobby\crash-reports\" />
+    <Folder Include="server\mc\Lobby\logs\" />
+    <Folder Include="server\mc\Lobby\plugins\" />
+    <Folder Include="server\mc\Lobby\plugins\AutoSaveWorld\" />
+    <Folder Include="server\mc\Lobby\plugins\PluginMetrics\" />
+    <Folder Include="server\mc\Lobby\world_nether\" />
+    <Folder Include="server\mc\Lobby\world_nether\data\" />
+    <Folder Include="server\mc\Lobby\world_nether\DIM-1\" />
+    <Folder Include="server\mc\Lobby\world_nether\DIM-1\data\" />
+    <Folder Include="server\mc\Lobby\world_nether\DIM-1\poi\" />
+    <Folder Include="server\mc\Lobby\world_nether\DIM-1\region\" />
+    <Folder Include="server\mc\Lobby\world_the_end\" />
+    <Folder Include="server\mc\Lobby\world_the_end\data\" />
+    <Folder Include="server\mc\Lobby\world_the_end\DIM1\" />
+    <Folder Include="server\mc\Lobby\world_the_end\DIM1\data\" />
+    <Folder Include="server\mc\Lobby\world_the_end\DIM1\poi\" />
+    <Folder Include="server\mc\Lobby\world_the_end\DIM1\region\" />
     <Folder Include="server\ps1\" />
     <Folder Include="static\js\commandline\modules\" />
     <Folder Include="static\js\commandline\modules\commands\" />
