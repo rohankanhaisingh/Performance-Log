@@ -1,6 +1,6 @@
-# Performance Log by Rohan Kanhaisingh
+# Performance Log
 
-Performance Log by Rohan Kanhaising Copyright 2020.
+Performance Log, a NodeJS application.
 
 Performane Log is a opensource web application that will monitor your system information. This application is free to use.
 Its still under construction; some features might not work and you might experience some bugs. I try to add as much as I can to this project.
