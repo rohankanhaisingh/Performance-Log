@@ -2,7 +2,7 @@ import * as output from '../output.js';
 import * as sh from '../../socketHandler.js';
 import { socket } from '../../index.js';
 
-function execute(command) {
+const execute = command => {
     var a, b, c, d, e, f, out = "";
 
     a = command.split(" ");

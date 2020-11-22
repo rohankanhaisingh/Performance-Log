@@ -1,6 +1,10 @@
 import { handleInitializedData, handleUpdatedData } from "./index.js";
 
-function listen(socket) {
+/**
+ * .
+ * @param {SocketIO.Client} socket
+ */
+const listen = socket => {
     socket.on("initHardwareInformation", function (data) {
         handleInitializedData(data);
     });

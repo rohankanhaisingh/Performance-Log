@@ -29,7 +29,7 @@ for (let item in s) {
 
 // Change the settings.
 function _changeSettings(data) {
-    const a = fs.readFileSync("./static/user/settings.json", 'utf-8'); // Read the JSON file again cuz why not.
+    const a = JSON.parse(fs.readFileSync("./static/user/settings.json", 'utf-8')); // Read the JSON file again cuz why not.
 
     // Again, the easy way of using a if-statement.
     switch (data.type) {
@@ -51,6 +51,18 @@ function _changeSettings(data) {
 
             _write();
             break;
+        case "siteLoader":
+
+            a.siteLoader = data.value
+            _write();
+
+            break;
+        case "backgroundVideo":
+
+            a.backgroundVideo = data.value
+            _write();
+
+            break;
     }
 
     // Write the json file.
@@ -58,7 +70,6 @@ function _changeSettings(data) {
         fs.writeFile("./static/user/settings.json", JSON.stringify(a), "utf-8", function (err) {
             // Logs a error if there is one.
 
-            console.log(err);
         });
     }
 }

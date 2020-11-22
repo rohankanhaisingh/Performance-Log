@@ -7,6 +7,7 @@
     top: 0;
     left: 0;
     z-index: 1;
+    background: #000;
 }
 
 .static-background-container {
@@ -34,3 +35,25 @@
     .background-header.background-02 {
         background: rgba(255, 255, 255, 0.50);
     }
+
+.app.theme-simple-bright .background-header video {
+    display: none;
+}
+
+.background-header.background-02.bg-space {
+    background: url(../images/v8FZpu6iT8Gl.jpg);
+    background-size: 100% 100%;
+    -moz-animation: bg-space-fadein 1s ease;
+    -o-animation: bg-space-fadein 1s ease;
+    -webkit-animation: bg-space-fadein 1s ease;
+    animation: bg-space-fadein 1s ease;
+}
+
+@keyframes bg-space-fadein {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}

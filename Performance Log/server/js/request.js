@@ -10,14 +10,15 @@ const fs = require("fs");
 const { developerMode } = require("./settingsHandler");
 
 
-var isSwitchingPage, page, processes = [];
+let isSwitchingPage, page, processes = [];
 
 
 // Initialize function. This function will be called when the user got connected to the server.
 function init(socket) {
+
     // This is basically a ping-pong feauture, to check the response latency.
     socket.on("requestTime", function (pingTime) {
-        var obj = {
+        let obj = {
             requestTime: pingTime,
             responseTime: Date.now()
         }
@@ -81,7 +82,7 @@ function init(socket) {
 
     // Execute Microsoft Powershell commands and return the value back to the webpage. Feature works but not stable yet.
     socket.on("powershellcommand", function (data) {
-        var proc = require("child_process").exec("powershell.exe " + data, function (stdin, stdout) {
+        let proc = require("child_process").exec("powershell.exe " + data, function (stdin, stdout) {
             socket.emit("powershellCommandStdout", stdout);
         });
     });
@@ -175,7 +176,10 @@ function init(socket) {
         try {
             fs.writeFileSync("./static/view/" + data.path, data.content);
         } catch (err) {
-            console.log(err);
+            socket.emit("serverWarning", {
+                time: Date.now(),
+                message: err.message
+            });
         }
     });
 

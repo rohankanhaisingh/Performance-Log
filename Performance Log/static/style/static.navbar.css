@@ -187,3 +187,34 @@
 .app.theme-dark .navbar-hidebutton-icon img {
     filter: none;
 }
+
+/* Simple theme dark */
+
+.app.theme-simple-dark .app-navbar.static-navbar .container {
+    background: #201f2d;
+}
+
+.app.theme-simple-dark .app-navbar.static-navbar:before {
+    display: none;
+}
+
+.app.theme-simple-dark .navbar-button-title span {
+    color: #fff;
+}
+
+.app.theme-simple-dark .navbar-button-icon img {
+    filter: invert(1);
+}
+
+.app.theme-simple-dark .navbar-hidebutton-text span {
+    color: #fff;
+}
+
+.app.theme-simple-dark .navbar-hidebutton-icon img {
+    filter: invert(0);
+}
+
+.app.theme-simple-dark .navbar-button.active {
+    background: #42405b;
+    box-shadow: 10px 10px 10px #0e0e0e;
+}

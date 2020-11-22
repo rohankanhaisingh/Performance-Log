@@ -1,6 +1,10 @@
 import { handleBatteryData } from './index.js';
 
-function listen(socket) {
+/**
+ * @param {SocketIO.Client} socket
+ */
+const listen = socket => {
+
     // Accepting a page request.
     socket.on("acceptPageRequest", function (data) {
         console.log(data);
@@ -11,13 +15,13 @@ function listen(socket) {
         });
     });
 
+    // Event when the client (user) received information about the battery..
     socket.on("initBatteryInformation", function (data) {
         handleBatteryData(data);
     });
 
 
     // Event when user disconnected from the server
-
     socket.on("disconnect", function () {
         socket.emit("disconnect", {});
     });

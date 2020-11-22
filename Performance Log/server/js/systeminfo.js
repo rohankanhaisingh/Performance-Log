@@ -11,7 +11,10 @@ const cpuStat = require("cpu-stat");
 const osu = require("os-utils");
 
 var _events = {
-    onLoaded: undefined
+    onLoaded: undefined,
+    onLoad: undefined,
+    onAbort: undefined,
+    onError: undefined
 }
 
 const _cpu = {

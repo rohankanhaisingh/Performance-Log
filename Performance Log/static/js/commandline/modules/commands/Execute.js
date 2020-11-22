@@ -2,78 +2,122 @@ import * as output from '../output.js';
 import * as sh from '../../socketHandler.js';
 import { socket } from '../../index.js';
 
-function execute(command) {
-    var a = command.split(" "), b, c, d = {maxPlayers: 10, useDiscordPresence: false, physicalMemory: 1024}, e, f, h, i, j, k, l, m, n, o, p;
-    b = a[0];
-    if (typeof b !== 'undefined' && b !== '' && b.length > 0) {
-        switch (b) {
+/**
+ * Executes the Execute command (lmao nice).
+ * @param {string} command
+ */
+const execute = command => {
+    const splitText = command.split(" ");
+    const executableType = splitText[0];
+    const args = command.substring(executableType.length + 1).split(" ");
+
+    const options = {
+        closeAll: undefined,
+        maxPlayers: 10,
+        physicalMemory: 2048,
+        useDiscordPresence: false
+    }
+
+    let argumentValue, argumentValueNumber, byteType, byteNumber;
+
+    // If the variable is not undefined, not empty and the length is also more than 0, execute that code.
+    if (typeof executableType !== 'undefined' && executableType !== '' && executableType.length > 0) {
+
+        // Select the executable type.
+        switch (executableType) {
             case "MinecraftServer":
-                c = command.substring(b.length).split(" ");
-                c.forEach(function (da) {
-                    if (da.substring(0, 1) == '-') {
-                        switch (da.substring(1)) {
+                // Run a dedicated minecraft server.
+
+                for (let arg in args) {
+                    let text = args[arg];
+
+                    // Check if the first character starts with a '-'.
+                    if (text.substring(0, 1) == '-') {
+                        let argumentName = text.substring(1);
+
+                        switch (argumentName) {
                             case "MaxPlayers":
-                                for (var i = 0; i < c.length; i++) {
-                                    if (c[i] == da) {
-                                        d.maxPlayers = parseInt(c[i + 1]);
-                                    }
+
+                                argumentValue = command.substring(command.indexOf(text) + (text.length + 1)).split(" ")[0]; // Gets the value after the argument
+                                argumentValueNumber = parseFloat(argumentValue); // Convert the value into a number. This can return a number or NaN.
+
+                                if (!isNaN(argumentValueNumber)) {
+                                    options.maxPlayers = argumentValueNumber;
+                                } else {
+                                    output.createErrorMessage('PL', `Cannot convert string into a number. Please make sure there are no letter, spaces or symbols in the value. At -MaxPlayers ${argumentValue}`);
                                 }
+
+
                                 break;
                             case "PhysicalMemory":
-                                for (var i = 0; i < c.length; i++) {
-                                    if (c[i] == da) {
-                                        if (typeof c[i + 1] !== 'undefined') {
-                                            e = c[i + 1];
-                                            f = e.substring(e.length - 2);
-                                            switch (f) {
-                                                case "GB":
-                                                    h = parseFloat(e.substring(0, e.indexOf(f)));
-                                                    if (!isNaN(h)) {
-                                                        d.physicalMemory = h * 1000;
-                                                    } else {
-                                                        output.createErrorMessage("PL", "The given string cannot be converted into a float.");
-                                                    }
-                                                    break;
-                                                case "MB":
-                                                    h = parseFloat(e.substring(0, e.indexOf(f)));
-                                                    if (!isNaN(h)) {
-                                                        d.physicalMemory = h;
-                                                    } else {
-                                                        output.createErrorMessage("PL", "The given string cannot be converted into a float.");
-                                                    }
-                                                    break;
-                                                default:
-                                                    output.createErrorMessage("PL", `${f} is not a recognized size type. Please use GB or MB`);
-                                                    break;
-                                            }
-                                        } else {
-                                            output.createErrorMessage("PL", `Missing value after argument. Enter a value after the ${da} argument to continue.`);
-                                        }
+
+                                argumentValue = command.substring(command.indexOf(text) + (text.length + 1)).split(" ")[0]; // Gets the value after the argument
+
+                                // Get the last 2 characters of the argument value. This is the
+                                byteType = argumentValue.substring(argumentValue.length - 2).toUpperCase();
+                                byteNumber = parseFloat(argumentValue); // Convert the value into a number. This can return a number or NaN.
+
+                                // Check if the number is not NaN.
+                                if (!isNaN(byteNumber)) {
+                                    switch (byteType) {
+                                        case "GB":
+                                            // If the bytetype is gigabyte.
+                                            options.physicalMemory = byteNumber * 1024;
+
+                                            break;
+                                        case "MB":
+                                            options.physicalMemory = byteNumber;
+                                            break;
+                                        default:
+                                            // If none of these cases match.
+
+                                            output.createErrorMessage("PL", `"${byteType}" is not a recognized or a supported bytetype for this function. Please use MB or GB`);
+
+                                            break;
                                     }
+                                } else {
+
+                                    // If string cannot be converted into a number.
+                                    output.createErrorMessage('PL', `Cannot convert string into a number. Please make sure there are no letter, spaces or symbols in the value. At -PhysicalMemory ${argumentValue}`);
                                 }
+
+                                console.log(argumentValue);
+
                                 break;
                             case "UseDiscordPresence":
-                                d.useDiscordPresence = true;
+                                // No need to split or handle a value after this after this argument.
+
+                                options.useDiscordPresence = true;
+
                                 break;
                             case "CloseAll":
-                                d.closeAll = true;
+                                // Close the server and prevent the app to start another server.
+
+                                options.closeAll = true;
+
                                 break;
                             default:
-                                output.createErrorMessage("PL", `<code class="pl-command-arg">${da}</code> is not a recognized executable argument for this type.`);
+                                // Return a error if no case matches.
+
+                                output.createErrorMessage("PL", `${text} is not a recognized argument for this function.`);
+
                                 break;
                         }
                     }
-                });
+                }
+                
 
-                if (typeof d.closeAll !== 'undefined') {
-                    sh.emit(socket, "execute:ms_server:close", d);
+                if (typeof options.closeAll !== 'undefined') {
+                    sh.emit(socket, "execute:ms_server:close", options);
                 } else {
-                    sh.emit(socket, "execute:ms_server", d);
+                    sh.emit(socket, "execute:ms_server", options);
                 }
                 break;
             default:
-                output.createErrorMessage("PL", `${b} is not a recognized executable function. Please enter <code class="pl-command">Help</code> <code class="pl-command-class">Execute</code> for more information about this command.`);
-                return;
+                // If none of these cases matches, return a error.
+
+                output.createErrorMessage("PL", `${executableType} is not a recognized executable function. Please enter <code class="pl-command">Help</code> <code class="pl-command-class">Execute</code> for more information about this command.`);
+                
                 break;
         }
     }

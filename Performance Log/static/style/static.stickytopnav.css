@@ -169,3 +169,34 @@
 .app.theme-dark .topnav-container:before {
     box-shadow: none;
 }
+
+
+/* Simple dark theme */
+
+.app.theme-simple-dark .app-sticky-topnav {
+    background: #201f2d;
+}
+
+.app.theme-simple-dark .topnav-container:before {
+    box-shadow: none;
+}
+
+.app.theme-simple-dark .topnav-title span {
+    font-family: HighTide;
+    color: #fff;
+    font-size: 27px;
+    user-select: none;
+    text-shadow: 4px 2px 0px #676fc5;
+}
+
+.app.theme-simple-dark .topnav-description span {
+    color: #fff;
+}
+
+.app.theme-simple-dark .topnav-itembox-item-icon {
+    filter: invert(1);
+}
+
+.app.theme-simple-dark .topnav-itembox-item-content span {
+    color: #fff;
+}

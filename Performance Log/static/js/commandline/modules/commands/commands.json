@@ -50,5 +50,14 @@
     "commandListItems": [
       "Clear"
     ]
+  },
+  "Exit": {
+    "description": "Closes the running application",
+    "commandListItems": [
+      "Exit",
+      "Exit -Forced",
+      "Exit -PreventLogs",
+      "Exit -RickRollMode"
+    ]
   }
 }

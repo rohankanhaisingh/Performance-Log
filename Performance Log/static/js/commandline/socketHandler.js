@@ -1,31 +1,44 @@
+// Import objects and function from other modules.
 import { handleObjectData } from './modules/commands/GetObject.js';
 import { createOutputMessage, createWarningMessage } from './modules/output.js';
 
 
-function listen(socket) {
+/**
+ * Listen function. This function will be called when the user got connected to the server.
+ * 
+ * @param {SocketIO.Client} socket SocketIO Client object.
+ */
+const listen = (socket) => {
+
     // Accepting a page request.
-    socket.on("acceptPageRequest", function (data) {
-        console.log(data);
-        location.href = `./${data.page}`;
+    socket.on("acceptPageRequest", (data) => {
+
+        // Give the server a sign that the user is switching from page.
         socket.emit("handlePageSwitch", {
             time: Date.now(),
             expectedTimeInterval: 2000
         });
+
+        location.href = `./${data.page}`; // Change the page.
     });
 
-    socket.on("serverWarning", function (data) {
+    // Global event when the server has some warnings.
+    socket.on("serverWarning", (data) => {
         createWarningMessage("PL", data.message);
     });
 
-    socket.on("getobject:accept", function (d) {
-        handleObjectData(d);
+    // When the user requested a object and the server accepted the request, it will send the needed information to the webpage.
+    socket.on("getobject:accept", (data) => {
+        handleObjectData(data);
     });
 
-    socket.on("powershellCommandStdout", function (d) {
-        createOutputMessage("PS", d);
+    // Listen for powershell command output.
+    socket.on("powershellCommandStdout", (data) => {
+        createOutputMessage("PS", data);
     });
 
-    socket.on("execute:ms_server:receive", function (d) {
+    // Log the Ngrok, Bungeecord and Spigot output in the webpage.
+    socket.on("execute:ms_server:receive", (d) => {
         switch (d.type) {
             case "ngrok":
                 if (d.d.indexOf("url") > -1) {
@@ -54,12 +67,14 @@ function listen(socket) {
     });
 
     // Event when user disconnected from the server
-
-    socket.on("disconnect", function () {
+    socket.on("disconnect", () => {
         socket.emit("disconnect", {});
     });
 
-    const requestPage = function (page) {
+    /**
+     * @param {string} page
+     */
+    const requestPage = (page) => {
         socket.emit("requestPage", {
             page: page,
             time: Date.now(),
@@ -70,7 +85,13 @@ function listen(socket) {
     window['requestPage'] = requestPage;
 }
 
-function emit(socket, t, d) {
+/**
+ * Emit data to the server using SocketIO.
+ * @param {SocketIO.Client} socket
+ * @param {string} t Name of data
+ * @param {any} d Actual data.
+ */
+const emit = (socket, t, d) => {
     var a, b, c, d, e; 
     socket.emit(t, d);
 }

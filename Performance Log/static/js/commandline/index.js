@@ -1,20 +1,24 @@
 import * as sh from './sockethandler.js';
 import * as inputHandler from './modules/inputHandler.js';
 
-var socket = io.connect("http://localhost:8000/");
+const socket = io.connect("http://localhost:8000/");
+let commandType = "performanceLog";
 
-sh.listen(socket);
+sh.listen(socket); // Start listening for events when the client (user) got connected to the server.
 
+
+// Give the server a sign that the client (user) got connected.
 socket.emit("clientConnect", {
     page: 'index',
     time: Date.now(),
     id: socket.id,
 });
 
-
-var commandType = "performanceLog";
-
-function changeCommandType(a) {
+/**
+ * Changes the command type
+ * @param {string} a command.
+ */
+const changeCommandType = a => {
     commandType = a;
 }
 

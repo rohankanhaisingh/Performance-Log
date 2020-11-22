@@ -9,7 +9,7 @@
  * 
  * Enjoy Performance Log.
  * 
- * NOTE: Sorry if my grammar is bad. English is not 100% perfect for me :(.
+ * NOTE: Sorry if my grammar is bad.
  * 
 */
 

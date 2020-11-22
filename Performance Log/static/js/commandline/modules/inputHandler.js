@@ -34,6 +34,10 @@ let itemSelector = 0;
 let itemLength = 0; // Item length.
 let itemArray = [];
 
+/**
+ * Load the commands
+ * @param {HTMLDivElement} inputElement
+ */
 const loadCommandListFile = (inputElement) => {
     // Opens the commands JSON file.
     const xhr = new XMLHttpRequest();
@@ -59,7 +63,11 @@ const loadCommandListFile = (inputElement) => {
     xhr.send(null); // I want no body header being sent.
 }
 
-
+/**
+ * Creates a commandlist item.
+ * @param {string} command
+ * @param {HTMLDivElement} inputElement
+ */
 const createCommandListItem = (command, inputElement) => {
     let keyWord, everythingNextToKeyword, args, strings, mainText = command.split(" "), out = "";
 
@@ -91,6 +99,10 @@ const createCommandListItem = (command, inputElement) => {
     elements.push(item); // Add the item in the elements array.
 }
 
+/**
+ * Starts adding event listeners when the client (user) got connected to the server.
+ * @param {HTMLDivElement} element
+ */
 const listen = (element) => {
     if (typeof element !== 'undefined') { // Check if the element argument is not undefined.1
         if (element instanceof HTMLDivElement) { // Check if the element argument is a of the HTMLDivElement class.

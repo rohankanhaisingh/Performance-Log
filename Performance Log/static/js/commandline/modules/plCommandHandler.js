@@ -9,21 +9,28 @@ import * as GetObject from './commands/GetObject.js';
 import * as Execute from './commands/Execute.js';
 import * as Help from './commands/Help.js';
 
-function handle(command) {
-    var a, b, c, d, e;
-    if (command == '') {
-        return;
-    }
+/**
+ * Handle commands.
+ * @param {string} command
+ */
+const handle = command => {
+    let commandKeyword, commandArguments;
 
-    a = command.split(" ");
-    b = a[0];
+    if (command == '') return;
+
+    commandKeyword = command.split(" ")[0];
+    commandArguments = command.substring(commandKeyword.length + 1);
+
     switch (commandType) {
         case "performanceLog":
             createInputMessage("PL", command);
 
-            switch (b) {
+            // Check what the keyword is.
+            switch (commandKeyword) {
                 case "ReadFile":
-                    ReadFile.execute(command.substring(9));
+                    
+                    ReadFile.execute(commandArguments);
+
                     break;
                 case "Clear":
                     clearMessages();
@@ -32,8 +39,12 @@ function handle(command) {
                     GetObject.execute(command.substring(11));
                     break;
                 case "Powershell":
+                    // Change the command type.
                     changeCommandType('powershell');
+
+                    // Create a epic powershell startup line.
                     createOutputMessage("PS", `Windows PowerShell Copyright (C) Microsoft Corporation. All rights reserved. Try the new cross-platform PowerShell https://aka.ms/pscore6`);
+
                     break;
                 case "Execute":
                     Execute.execute(command.substring(8));
@@ -50,18 +61,23 @@ function handle(command) {
                     }, 1000);
                     break;
                 default:
-                    var i = 0;
-                    for (var a in ReadFile.savedTextAreas) i += 1;          
+                    // If the keyword is none of these cases
+
+                    let i = 0; // Start index number
+
+                    for (let item in ReadFile.savedTextAreas) i += 1;          
+
+                    // Check if the command is a variable or not
                     if (i > 0) {
-                        if (typeof ReadFile.savedTextAreas[b] == 'undefined') {
-                            createErrorMessage("PL", `"${b}" is not a recognized as a Performance-Log command or is not a defined textinput. Please use <code class="pl-command-string">"Help"</code> to list a guide of commands.`);
+                        if (typeof ReadFile.savedTextAreas[commandKeyword] == 'undefined') {
+                            createErrorMessage("PL", `"${commandKeyword}" is not a recognized as a Performance-Log command or is not a defined textinput. Please use <code class="pl-command-string">"Help"</code> to list a guide of commands.`);
                             return;
                         } else {
-                            ReadFile.handleTextInput(command.substring(b.length + 1), ReadFile.savedTextAreas[b]);
+                            ReadFile.handleTextInput(commandArguments, ReadFile.savedTextAreas[commandKeyword]);
                         }
                     }
                     if (i == 0) {
-                        createErrorMessage("PL", `"${b}" is not a recognized as a Performance-Log command or is not a defined textinput. Please use <code class="pl-command-string">"Help"</code> to list a guide of commands.`);
+                        createErrorMessage("PL", `"${commandKeyword}" is not a recognized as a Performance-Log command or is not a defined textinput. Please use <code class="pl-command-string">"Help"</code> to list a guide of commands.`);
                     }
                   
 

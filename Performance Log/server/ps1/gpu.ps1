@@ -2,10 +2,9 @@ $ArrComputers =  "."
 
 Clear-Host
 
-foreach ($Computer in $ArrComputers) {
+function Get-VideoControllerInformation {
 
-	$computerVideo = Get-WmiObject Win32_VideoController
-
-	Write-Host $computerVideo.description -ForegroundColor "white"
-
+	$info = Get-WmiObject Win32_VideoController
+	
+	return $info
 }

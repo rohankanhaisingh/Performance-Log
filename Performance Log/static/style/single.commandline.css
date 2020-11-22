@@ -1,8 +1,16 @@
+.app-navbar.static-navbar:before {
+	box-shadow: none;
+}
+
 .commandline-container.single-commandline {
 	width: 100%;
 	height: 100%;
-	background: #0c0c0c;
+	background: #efefef;
 	position: relative;
+}
+
+.commandline-container.single-commandline .container {
+
 }
 
 .commandline-output {
@@ -82,7 +90,7 @@
 
 	.commandline-output-line-cll-le-type span {
 		font-family: monospace;
-		color: #fff;
+		color: #000000;
 		font-size: 14px;
 		display: inline-block;
 		margin-top: 6px;
@@ -101,6 +109,7 @@
 	height: 100%;
 	pointer-events: none;
 	user-select: none;
+	filter: invert(1);
 }
 
 .commandline-output-line-cll-ri {
@@ -115,32 +124,32 @@
 
 	.commandline-output-line-cll-ri span {
 		font-family: monospace;
-		color: #fff;
+		color: #000000;
 		display: table;
 		font-size: 13px;
 		margin-top: 7px;
 	}
 
-        .commandline-output-line-cll-ri span .pl-output-textarea {
-            width: 550px;
-            height: 400px;
-            resize: none;
-            background: #101010;
-            outline: none;
-            border: 1px solid transparent;
-            color: #fff;
-            font-family: monospace;
-            padding: 10px;
+		.commandline-output-line-cll-ri span .pl-output-textarea {
+			width: 550px;
+			height: 400px;
+			resize: none;
+			background: #d2d2d2;
+			outline: none;
+			border: 1px solid transparent;
+			color: #000;
+			font-family: monospace;
+			padding: 10px;
 			overflow-x: hidden;
 			overflow-y: auto;
-            -moz-transition: all 0.3s ease;
-            -o-transition: all 0.3s ease;
-            -webkit-transition: all 0.3s ease;
-            transition: all 0.3s ease;
-        }
+			-moz-transition: all 0.3s ease;
+			-o-transition: all 0.3s ease;
+			-webkit-transition: all 0.3s ease;
+			transition: all 0.3s ease;
+		}
 			.commandline-output-line-cll-ri span .pl-output-textarea:focus {
 				box-shadow: 11px 6px 7px black;
-				background: #252525;
+				background: #adadad;
 			}
 
 			.commandline-output-line-cll-ri span .pl-output-textarea.blink {
@@ -177,10 +186,10 @@ code.pl-log-error {
 	font-weight: 900;
 }
 code.pl-command {
-	color: #ffe9b4
+	color: #b53030
 }
 code.pl-command-arg {
-	color: #78ffff;
+	color: #25bbbb;
 }
 code.json-property {
 	color: #e6c057;
@@ -215,7 +224,7 @@ code.bungee-type {
 	-o-animation: commandline-output-line-error-fadein .5s ease;
 	-webkit-animation: commandline-output-line-error-fadein .5s ease;
 	animation: commandline-output-line-error-fadein .5s ease;
-	background: #230000;
+	background: #ffd9d9;
 }
 
 .commandline-output-line.line-warning {
@@ -259,7 +268,7 @@ code.bungee-type {
 		background: #ff2c2c;
 	}
 	100% {
-		background: #230000;
+		background: #ffd9d9;
 	}
 }
 
@@ -278,7 +287,7 @@ code.bungee-type {
 	float: left;
 	margin-left: 20px;
 	margin-top: 10px;
-	background: #191919;
+	background: #dadada;
 	border-radius: 30px;
 	padding: 15px;
 	white-space: nowrap;
@@ -298,10 +307,10 @@ code.bungee-type {
 
 @keyframes commandline-input-textfield-blink {
 	0% {
-		background: #fff;
+		background: #ffaaaa;
 	}
 	100% {
-		background: #191919;
+		background: #dadada;
 	}
 }
 
@@ -309,7 +318,7 @@ code.bungee-type {
 		width: 100%;
 		height: 100%;
 		font-family: monospace;
-		color: #fff;
+		color: #000;
 		font-size: 13px;
 		display: inline-block;
 		margin-top: 2px;
@@ -356,8 +365,8 @@ code.bungee-type {
 	bottom: calc(100% + 20px);
 	padding: 15px;
 	z-index: 5;
-	backdrop-filter: blur(20px);
-	border: 1px solid #212121;
+	background: #d8d8d8;
+	box-shadow: 6px 7px 10px 0px #cacaca;
 	-moz-transition: height 0.3s ease;
 	-o-transition: height 0.3s ease;
 	-webkit-transition: height 0.3s ease;
@@ -422,14 +431,80 @@ code.bungee-type {
 
 .commandline-input-list-item-content span {
 	font-family: monospace;
-	color: #fff;
+	color: #000;
 	font-size: 13px;
 }
 
 .commandline-input-list-item:hover {
-	background: #2c2c2c;
+	background: #d0d0d0;
 }
 
 .commandline-input-list-item.focus {
-	border: 1px solid #2eacff;
+	border: 1px solid #ff3636;
+}
+
+/* Dark theme */
+
+.app.theme-dark .commandline-container.single-commandline {
+	background: #000;
+}
+
+.app.theme-dark .commandline-output-line-cll-ri span {
+	color: #fff;
+}
+
+.app.theme-dark .commandline-output-line-cll-le-type span {
+	color: #fff;
+}
+
+.app.theme-dark .commandline-output-line-cll-le-icon img {
+	filter: none;
+}
+
+.app.theme-dark .commandline-output-line.line-error {
+	background: #270303;
+	-moz-animation: commandline-output-line-error-fadein-dark .5s ease;
+	-o-animation: commandline-output-line-error-fadein-dark .5s ease;
+	-webkit-animation: commandline-output-line-error-fadein-dark .5s ease;
+	animation: commandline-output-line-error-fadein-dark .5s ease;
+}
+
+@keyframes commandline-output-line-error-fadein-dark {
+	0% {
+		background: #ff2c2c;
+	}
+	100% {
+		background: #270303;
+	}
+}
+
+.app.theme-dark code.pl-command {
+	color: #ffed6f;
+}
+
+.app.theme-dark .commandline-input-textfield {
+	background: #101010;
+	color: #fff;
+}
+
+.app.theme-dark .commandline-input-textfield .commandline-input-textfield-ce {
+	color: #fff;
+}
+
+.app.theme-dark .commandline-input-list {
+	background: #252525;
+	box-shadow: 6px 7px 10px 0px #1f1f1f;
+}
+
+.app.theme-dark .commandline-input-list-item-content span {
+	color: #fff;
+}
+
+.app.theme-dark .commandline-input-list-item:hover {
+	background: #171717;
+}
+
+.app.theme-dark .commandline-output-line-cll-ri span .pl-output-textarea {
+	background: #101010;
+	color: #fff;
 }

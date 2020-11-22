@@ -4,6 +4,12 @@
  *  Performance Log by Rohan Kanhaisingh
 */
 const app = $g(".app"), bgVideo = $g("<video> in .background-02"), body = $g("<body>");
+const bgContainer = $g(".background-02");
+const loader = $g(".app-loader");
+const loaderGridCol = $ga(".loader-grid-col");
+const navbar = $g(".app-navbar");
+const appTabs = $g(".tab-main");
+const hash = location.href.substring(location.href.indexOf("?") + 1).split("&");
 
 // Load the settings file
 const XHR = new XMLHttpRequest();
@@ -22,6 +28,16 @@ XHR.onreadystatechange = function () {
 
                                 bgVideo.src = "../videos/video_smoke_50fCaDVaVT3P.mp4";
                                 break;
+                            case "simple-bright":
+                                app.AddClass("theme-simple-bright");
+
+                                bgVideo.remove();;
+                                break;
+                            case "simple-dark":
+                                app.AddClass("theme-simple-dark");
+
+                                bgVideo.remove();;
+                                break;
                             default:
                                 app.RemoveClass("theme-dark");
                                 break;
@@ -35,6 +51,18 @@ XHR.onreadystatechange = function () {
                                 Duration: 9000
                             });
                         } 
+                        break;
+                    case "siteLoader":
+                        if (!settings[a]) {
+                            loader.AddClass("hidden");
+                        }
+                        break;
+                    case "backgroundVideo":
+                        if (!settings[a]) {
+
+                            bgContainer.AddClass("bg-space");
+                            bgVideo.remove();
+                        }
                         break;
                 }
             }
@@ -105,10 +133,6 @@ $ga("<*>").forEach(function (element) {
     }
 });
 
-// Collapse and expand the navbar
-const navbar = $g(".app-navbar");
-const appTabs = $g(".tab-main");
-
 $g(".button-navbar-collapse-toggle").On("click", function () {
     const icon = this.getElementsByTagName("img")[0];
     if (navbar.HasClass("collapsed")) {
@@ -122,17 +146,11 @@ $g(".button-navbar-collapse-toggle").On("click", function () {
     }
 });
 
-// Loader
-const loader = $g(".app-loader");
-const loaderGridCol = $ga(".loader-grid-col");
-
 function addClassOnTimeout(index, element, className, delay) {
     setTimeout(function () {
         element.classList.add(className);
     }, index * delay);
 }
-
-var hash = location.href.substring(location.href.indexOf("?") + 1).split("&");
 
 for (var a in hash) {
     switch (hash[a]) {

@@ -277,3 +277,30 @@
 .tab-main.expanded {
     width: calc(100vw - 90px);
 }
+
+/* Simple dark theme */
+
+.app.theme-simple-dark .app-tabs.static-tabs {
+    background: #1d1c29;
+}
+
+
+/* Simple bright theme */
+
+.app.theme-simple-bright .app-tabs.static-tabs {
+    background: #fff;
+}
+
+.app.theme-simple-bright .fluid-grid-col {
+    background: #ff7171;
+    box-shadow: 12px 8px 10px #ff8686;
+    border-radius: 30px;
+}
+
+.app.theme-simple-bright .fluid-grid-col span {
+    color: #fff;
+}
+
+.app.theme-simple-bright .fluid-grid-col-canvas-overlay {
+    background: radial-gradient(#ce4747, #ff7171, #ff7171);
+}

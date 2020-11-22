@@ -1,6 +1,6 @@
 import * as sh from './sockethandler.js';
 
-var socket = io.connect("http://localhost:8000/");
+const socket = io.connect("http://localhost:8000/");
 
 sh.listen(socket);
 
@@ -47,21 +47,25 @@ toggles.forEach(function (toggle) {
     });
 });
 
-// Toggle toggles based on the info in the settings file
-
+// Make the toggles active or not based on the info in the settings file
 $gxhr("../user/settings.json", function (response) {
-    var a = JSON.parse(response.text);
-    for (var b in a) {
-        var c = $g("." + b);
-        if (typeof c !== 'undefined') {
-            if (typeof a[b] == 'boolean') {
-                if (a[b]) {
-                    c.AddClass("active");
+    let parsedText = JSON.parse(response.text);
+    let element;
+
+    for (let item in parsedText) {
+
+        // Get the element.
+        element = $g("." + item);
+
+        if (typeof element !== 'undefined') {
+            if (typeof parsedText[item] == 'boolean') {
+                if (parsedText[item]) {
+                    element.AddClass("active");
                 }
             }
-            else if (typeof a[b] == 'string') {
-                if (a[b] == 'dark') {
-                    c.AddClass("active");
+            else if (typeof parsedText[item] == 'string') {
+                if (parsedText[item] == 'dark') {
+                    element.AddClass("active");
                 }
             }
         }

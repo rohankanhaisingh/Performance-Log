@@ -1,8 +1,9 @@
-function listen(socket) {
+const listen = socket => {
     // Accepting a page request.
-    socket.on("acceptPageRequest", function (data) {
-        console.log(data);
+    socket.on("acceptPageRequest", data => {
+
         location.href = `./${data.page}`;
+
         socket.emit("handlePageSwitch", {
             time: Date.now(),
             expectedTimeInterval: 2000
@@ -10,7 +11,7 @@ function listen(socket) {
     });
 
     // Event when the server got closed
-    socket.on("serverClosed", function (data) {
+    socket.on("serverClosed", data => {
         if (typeof $alert == 'function') {
             $alert("Server got closed");
         }
@@ -18,12 +19,11 @@ function listen(socket) {
 
 
     // Event when user disconnected from the server
-
-    socket.on("disconnect", function () {
+    socket.on("disconnect", () => {
         socket.emit("disconnect", {});
     });
 
-    const requestPage = function (page) {
+    const requestPage = page => {
         socket.emit("requestPage", {
             page: page,
             time: Date.now(),

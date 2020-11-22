@@ -2,156 +2,211 @@ import * as output from '../output.js';
 import * as sh from '../../socketHandler.js';
 import { socket } from '../../index.js';
 
-var savedTextAreas = {};
+let savedTextAreas = {};
 
-function sw(length) {
-    var a, b, c, d, e, f;
-    a = 'abcdefghijklmnopqrstuvwxyz1234567890ABCDEFGHIJKLMNOPQRSTUVWXYZ';
-    b = "";
-    if (length !== undefined) {
-        for (var i = 0; i < length; i++) {
-            c = Math.floor(Math.random() * a.length);
-            d = a.charAt(c);
-            b += d;
-        }
-    } else {
-        for (var i = 0; i < 12; i++) {
-            c = Math.floor(Math.random() * a.length);
-            d = a.charAt(c);
-            b += d;
-        }
+/**
+ * Generates a unique id.
+ * @param {any} length
+ */
+const uniqueid = length => {
+    const characters = 'abcdefghijklmnopqrstuvwxyz1234567890ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+    let out = "";
+
+    for (let i = 0; i < length; i++) {
+        let randomNumber = Math.floor(Math.random() * characters.length);
+        let randomChar = characters.charAt(randomNumber);
+        out += randomChar;
     }
-    return b;
+    return out;
 }
 
+/**
+ * Executes the ReadFile command.
+ * @param {string} command
+ */
+const execute = command => {
 
-function execute(command) {
-    var a, b, c = {path: undefined, writeTo: undefined, parseString: false, get: undefined, storeAs: undefined }, d, e, f, errList = [];
-    const args = command.split(" ");
+    // Options
+    const options = {
+        path: undefined,
+        writeTo: undefined,
+        parseString: false,
+        get: undefined,
+        storeAs: undefined
+    }
 
-    args.forEach(function (arg) {
+    const args = command.split(" "); // Split the command string into white spaces. This will return an array.
+    let val;
+
+    // Loop through the array.
+    args.forEach(arg => {
         if (arg.substring(0, 1) == '-') {
-            a = arg.substring(1).split(" ")[0];
-            switch (a) {
+
+            // Get the text after the '-' sign.
+            let argf = arg.substring(1).split(" ")[0];
+
+            // Check the argf value.
+            switch (argf) {
                 case "Path":
-                    b = command.substring(command.indexOf(a) + a.length + 1).split(" ")[0].split(`"`)[1];
-                    c.path = b;
+                    // Get the value after the argument.
+                    val = command.substring(command.indexOf(argf) + argf.length + 1).split(" ")[0].split(`"`)[1];
+
+                    options.path = val;
                     break;
                 case "WriteTo":
-                    b = command.substring(command.indexOf(a) + a.length + 1).split(" ")[0].split(`"`)[1];
-                    c.writeTo = b;
+                    // Get the value after the argument.
+                    val = command.substring(command.indexOf(argf) + argf.length + 1).split(" ")[0].split(`"`)[1];
+
+                    options.writeTo = val;
                     break;
                 case "Parse":
-                    c.parseString = true;
+                    // No need to split any of the text for this argument.
+
+                    options.parseString = true;
                     break;
                 case "Get":
-                    b = command.substring(command.indexOf(a) + a.length + 1).split(" ")[0].split(`"`)[1];
-                    c.get = b;
+                    // Get the value after the argument.
+                    val = command.substring(command.indexOf(argf) + argf.length + 1).split(" ")[0].split(`"`)[1];
+
+                    options.get = val;
                     break;
                 case "StoreAs":
-                    b = command.substring(command.indexOf(a) + a.length + 1).split(" ")[0].split(`"`)[1];
-                    c.storeAs = b;
+                    // Get the value after the argument.
+                    val = command.substring(command.indexOf(argf) + argf.length + 1).split(" ")[0].split(`"`)[1];
+
+                    options.storeAs = val;
                     break;
                 default:
                     output.createErrorMessage("PL", `<code class="pl-command">${arg}</code> is not a recognized ReadFile argument. Please enter <code class="pl-command">Help</code> <code class="pl-command-class">ReadFile</code> for more information about this command.`);
-                    return;
                     break;
             }
         }
     });
 
+
     // Check if important arguments are attached.
-    if (typeof c.path == 'undefined') {
+    if (typeof options.path == 'undefined') {
         output.createErrorMessage("PL", "Missing -Path argument with string after.");
     }
 
-    if (c.path.substring(0, 1) == '@') {
+    // Create a new XMLHttpRequest object.
+    const xhr = new XMLHttpRequest();
 
-    } else {
-        d = new XMLHttpRequest();;
-        d.onreadystatechange = function () {
-            if (this.readyState == 4) {
-                if (this.status == 200) {
-                    if (typeof c.parseString !== 'undefined') {
-                        if (c.parseString) {
-                            if (typeof c.get !== 'undefined') {
-                                e = JSON.parse(this.responseText)[c.get];
-                                if (typeof e !== 'undefined') {
-                                    output.createOutputMessage("PL", `${e}`);
-                                } else {
-                                    output.createErrorMessage("PL", `Property <code class="pl-command-string">${c.get}</code> is not a recognized JSON property in this file.`);
-                                }
-                            } else {
-                                output.createOutputMessage("PL", `${JSON.parse(this.responseText)}`);
-                            }
+    // Event listener when the state of the XHR object has been changed.
+    xhr.onreadystatechange = function () {
+        if (this.readyState == 4) { // If the state is equal to 4.
+            if (this.status == 200) { // If the response status is equal to 200 (or mostly OK).
+
+                // Handle the response text using the options.
+
+                // If the user want to parse the text and to get a specific property.
+                if (options.parseString) {
+                    if (typeof options.get !== 'undefined') {
+                        let parsedText = JSON.parse(this.responseText)[options.get];
+
+                        if (typeof parsedText !== 'undefined') {
+                            output.createOutputMessage("PL", `${parsedText}`);
                         } else {
-                            var ta = document.createElement("div");
-                            ta.innerText = this.responseText;
-                            ta.contentEditable = true;
-                            ta.className = 'pl-output-textarea';
-                            ta.setAttribute("t-id", sw(12));
-
-                            if (typeof c.storeAs !== 'undefined') {
-                                if (typeof savedTextAreas[c.storeAs] == 'undefined') {
-                                    savedTextAreas[c.storeAs] = {
-                                        element: ta,
-                                        content: ta.innerText,
-                                        path: c.path
-                                    };
-
-                                    ta.addEventListener("keyup", function () {
-                                        savedTextAreas[c.storeAs].content = this.innerText;
-                                    });
-                                } else {
-                                    output.createErrorMessage("PL", `Text field named ${c.storeAs} already exist. Please enter <code class="pl-command">${c.storeAs}</code> <code class="pl-command-arg">-Remove</code> to remove this variable.`)
-                                }
-                            }
-                            output.createOutputMessage("PL", null, "textArea", [ta]);
+                            output.createErrorMessage("PL", `Property <code class="pl-command-string">${parsedText.get}</code> is not a recognized JSON property in this file.`);
                         }
+
                     }
                 } else {
-                    output.createErrorMessage("PL", `The file <code class="pl-command-string">"${c.path}"</code> cannot be found. Did you forget anything to add?.`);
-                    return;
+                    // Create a new text area.
+                    const textAreaElement = $gcre("div.pl-output-textarea");
+
+                    textAreaElement.innerText = this.responseText;
+                    textAreaElement.contentEditable = true;
+                    textAreaElement.setAttribute("t-id", uniqueid(12));
+
+                    // Check if the storeAs variable already exist. If it does, it will return a error. If it doesn't, it will store the textarea into a variable.
+                    if (typeof options.storeAs !== 'undefined') {
+                        if (typeof savedTextAreas[options.storeAs] == 'undefined') {
+
+                            // Add a new object to the savedTextAreas object.
+                            savedTextAreas[options.storeAs] = {
+                                element: textAreaElement,
+                                content: textAreaElement.innerText,
+                                path: options.path
+                            };
+
+                            // Change the value when the user typed something in.
+                            textAreaElement.addEventListener("input", function () {
+                                savedTextAreas[options.storeAs].content = this.innerText;
+                            });
+
+                        } else {
+                            // Return a error if the variable already exist.
+
+                            output.createErrorMessage("PL", `Text field named ${c.storeAs} already exist. Please enter <code class="pl-command">${c.storeAs}</code> <code class="pl-command-arg">-Remove</code> to remove this variable.`)
+                        }
+                    }
+                    
+                    output.createOutputMessage("PL", null, "textArea", [textAreaElement]);
                 }
+            } else {
+                // Return a error if the file cannot be found because of a invalid path.
+
+                output.createErrorMessage("PL", `The file <code class="pl-command-string">"${options.path}"</code> cannot be found. Did you forget anything to add?.`);
+                return;
             }
         }
-        if (typeof c.path !== 'undefined') {
-            d.open("GET", c.path, true);
-            d.send(null);
-        }
+    }
+    if (typeof options.path !== 'undefined') {
+        xhr.open("GET", options.path, true);
+        xhr.send(null);
     }
 }
 
-function handleTextInput(command, obj) {
-    var a, b, c, d, e;
-    obj.element.classList.add("blink");
+/**
+ * Handle text area.
+ * @param {string} command
+ * @param {object} obj
+ */
+const handleTextInput = (command, obj) => {
+    let textArea = obj.element;
+    let textContent = obj.content;
+    let filePath = obj.path;
+    let commandLineInput = $g(".container in .commandline-output")
+    let args = command.split(" ");
 
-    $g(".container in .commandline-output").scroll({
+    // Blink and scroll to the element.
+    textArea.classList.add("blink");
+    commandLineInput.scroll({
         top: obj.element.offsetTop,
         behavior: "smooth"
     });
 
-    setTimeout(function () {
-        obj.element.classList.remove("blink");
-    }, 2000);
+    // Remove the blink effect.
+    setTimeout(() => { textArea.classList.remove("blink"); }, 2000);
 
-    a = command.split(" ");
-    a.forEach(function (arg) {
+
+    for (let arg in args) {
+
+        // Check if the first character of the argument starts with a '-'.
         if (arg.substring(0, 1) == "-") {
+
+            // Check the actual argument.
             switch (arg.substring(1)) {
                 case "Save":
+
+                    // Send the value to the server and let it save the file.
                     sh.emit(socket, "saveFile", obj);
+
+                    // Ouput
                     output.createOutputMessage("PL", `File has been saved at ${new Date()} to ${obj.path}`);
                     break;
                 case "Remove":
-
+                    
                     break;
                 default:
+                    // Return a error if the argument is not recognized.
+
                     output.createErrorMessage("PL", `<code class="pl-command-arg">${arg}</code> is not a recognized argument for this variable.`);
                     break;
             }
         }
-    });
+    }
 }
 
 export { execute, savedTextAreas, handleTextInput };
