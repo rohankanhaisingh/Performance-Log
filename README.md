@@ -37,11 +37,8 @@ properties by yourself. Keep in mind that you have no errors in the settings fil
 ----------------------------------
 
 
-## New in version 0.5.1:
-	- Rewrote some documents because it looked horrible (I still have to rewrite some).
-	- Added a lot of notes into some js documents, to let the user see what the code does.
-	- Added a lot of new features in the new commandline page.
-	- This app is just amazing by itself.
+## New in version 0.5.2:
+	- Done rewriting the code of this entire project. Programmers are now able to read the code without figuring out what the code does.
 
 
 ## Ideas in mind that might come into the project (I am working on this):
