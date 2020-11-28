@@ -1,1 +1,9 @@
-{"developerMode":false,"theme":"white","dataInterval":2000,"siteLoader":true,"backgroundVideo":true}
+{
+  "developerMode": true,
+  "theme": "dark",
+  "dataInterval": 2000,
+  "siteLoader": false,
+  "backgroundVideo": true,
+  "useDiscordPresence": false,
+  "discordPresenceClientID": null  
+}

@@ -57,7 +57,7 @@ const handle = command => {
                 case "Exit":
                     sh.emit(socket, "process.exit", {});
                     setTimeout(function () {
-                        g.Alert("You can now close this window");
+                        let noti = new WebNotification("Performance Log", "Server got closed", "You closed the webserver, this page wont respond on your requests anymore. Please close this window/tab or restart the server.", null, 10000);
                     }, 1000);
                     break;
                 default:

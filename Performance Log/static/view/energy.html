@@ -26,6 +26,7 @@
     <meta property="fb:app_id" content="118746002172806">
     <meta property="og:type" content="website">
     <title>Performance Log</title>
+    <link href="../icons/favicon.png" rel="icon"/>
     <link href="../style/index.css" rel="stylesheet" type="text/css" />
 
     <!-- Specific stylesheets -->
@@ -37,11 +38,22 @@
     <link href="../style/static.stickytopnav.css" rel="stylesheet" type="text/css" />
     <link href="../style/static.loader.css" rel="stylesheet" type="text/css">
     <link href="../style/static.tab.css" rel="stylesheet" type="text/css" />
+    <link href="../style/static.essentials.css" rel="stylesheet" type="text/css" />
 
     <!-- Font loader -->
     <link href="../fonts/index.css" rel="stylesheet" type="text/css" />
 </head>
 <body class="essentials-loader essentials-themetoggle essentials-event-buttonAction gjs-body fireview-loaded body-static no-scroll">
+    <div class="notification-overlay">
+        <div class="container">
+            <div class="notification-overlay-backdrop"></div>
+            <div class="notification-overlay-scroller">
+                <div class="container">
+
+                </div>
+            </div>
+        </div>
+    </div>
     <div class="app">
         <div class="container">
             <div class="app-loader static-loader">
@@ -237,9 +249,9 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.3.0/socket.io.js"></script>
     <script src="../js/g.js"></script>
-    <script>$g = g.Selector, $ga = g.All; $gnoti = g.Notification; $gxhr = g.XHRLoad; $gcreat = g.CreateElement;</script>
+    <script>var $g = g.Selector, $ga = g.All, $gnoti = g.Notification, $gxhr = g.XHRLoad, $gcreat = g.CreateElement;</script>
     <script src="../js/jquery.js"></script>
+    <script src="../js/static.essentials.js"></script>
     <script src="../js/energy/index.js" type="module"></script>
-    <script src="../js/static.essentials.js" type="module"></script>
 </body>
 </html>

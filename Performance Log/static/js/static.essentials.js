@@ -3,6 +3,7 @@
  *  
  *  Performance Log by Rohan Kanhaisingh
 */
+
 const app = $g(".app"), bgVideo = $g("<video> in .background-02"), body = $g("<body>");
 const bgContainer = $g(".background-02");
 const loader = $g(".app-loader");
@@ -10,6 +11,174 @@ const loaderGridCol = $ga(".loader-grid-col");
 const navbar = $g(".app-navbar");
 const appTabs = $g(".tab-main");
 const hash = location.href.substring(location.href.indexOf("?") + 1).split("&");
+
+// Notification
+
+const notificationContainer = $g(".container in .notification-overlay-scroller");
+const notifications = [];
+
+let scrollY = 0;
+
+notificationContainer.On("wheel", function () {
+    let direction = event.deltaY;
+
+    if (direction > 0) {
+        notifications.forEach(function (noti) {
+            noti.bottom -= 40;
+            noti.update();
+        });
+    } else {
+        notifications.forEach(function (noti) {
+            noti.bottom += 40;
+            noti.update();
+        });
+    }
+});
+
+class WebNotification {
+    /**
+     * Creates a new inline interactive web notification.
+     * @param {string} title
+     * @param {string} text
+     * @param {string} footer
+     * @param {string} icon
+     * @param {number} duration
+     */
+    constructor(title, subject, text, icon, duration) {
+        this.title = title;
+        this.text = text;
+        this.subject = subject;
+        this.icon = icon;
+        this.duration = duration;
+
+        this.id = Math.floor(Math.random() * 100000);
+
+        this.onCloseEvent;
+        this.onClickEvent;
+
+        this.bottom = 100;
+
+        this.notificationElement = $gcreat("div.notification", notificationContainer);
+        this.notificationElement.style.bottom = this.bottom + "px";
+
+        this.notificationContentLeft = $gcreat("div.notification-contentleft", this.notificationElement);
+        this.notificationTitle = $gcreat("div.notification-title", this.notificationContentLeft);
+        this.notificationTitle.innerHTML = `<span>${this.title}</span>`;
+        this.notificationSubject = $gcreat("div.notification-subject", this.notificationContentLeft);
+        this.notificationSubject.innerHTML = `<span>${this.subject}</span>`;
+        this.notificationText = $gcreat("div.notification-text", this.notificationContentLeft);
+        this.notificationText.innerHTML = `<span>${this.text}</span>`;
+
+        this.notificationContentRight = $gcreat("div.notification-contentright", this.notificationElement);
+
+        if (this.icon !== null) {
+            this.notificationIcon = $gcreat("div.notification-icon", this.notificationContentRight);
+            this.notificationIconImage = $gcreat("img", this.notificationIcon);
+            this.notificationIconImage.src = this.icon;
+        }
+
+        this.notificationButtons = $gcreat("div.notification-buttons", this.notificationContentRight);
+        this.notificationButton1 = $gcreat("div.notification-button", this.notificationButtons);
+        this.notificationButton1image = $gcreat("img", this.notificationButton1);
+        this.notificationButton1image.src = "../icons/icon_linkopen.jpg";
+        this.notificationButton1image.style.filter = 'invert(1)';
+
+        this.notificationButton2 = $gcreat("div.notification-button", this.notificationButtons);
+        this.notificationButton2image = $gcreat("img", this.notificationButton2);
+        this.notificationButton2image.src = "../icons/icon_arrowright.png";
+        this.notificationButton2image.style.filter = 'invert(0)';
+        this.notificationButton2.title = "Close this notification";
+
+        this.notificationButton2.onclick = () => {
+            this.notificationElement.classList.add("fadeout");
+            if (typeof this.onCloseEvent == 'function') {
+                this.onCloseEvent();
+            }
+        }
+
+        this.notificationButton1.onclick = () => {
+            this.notificationElement.classList.add("fadeout");
+            if (typeof this.onClickEvent == 'function') {
+                this.onClickEvent();
+            }
+        }
+
+        setTimeout(() => {
+            this.notificationElement.classList.add("fadeout");
+
+            setTimeout(() => {
+                this.notificationElement.remove();
+                notifications.pop();
+            }, 700);
+        }, this.duration);
+
+        notifications.forEach((noti) => {
+            var a = this.notificationElement.getBoundingClientRect();
+
+            noti.bottom += (a.height + 10);
+            noti.update();
+        });
+
+        notifications.push(this);
+    }
+
+    update() {
+        //if (this.bottom < 100) {
+        //    let wei = 0;
+
+        //    notifications.forEach(function (no) {
+        //        var a = no.notificationElement.getBoundingClientRect();
+        //        wei += a.height;
+        //    });
+
+        //    this.bottom =(wei + 10) + 20;
+        //}
+
+        //for (var i = 0; i < notifications.length; i++) {
+        //    if (notifications[i].id !== this.id) {
+        //        if (this.bottom == 100) {
+                    
+        //        }
+        //    }
+        //}
+
+        this.notificationElement.style.bottom = this.bottom + "px";
+    }
+
+    /**
+     * Event handlers for this notification.
+     * @param {("close" | "click")} event Event
+     * @param {Function} callback
+     */
+    On(event, callback) {
+        switch (event) {
+            case "click":
+                if (typeof callback == 'function') {
+                    this.onClickEvent = callback;
+                }
+                break;
+            case "close":
+                if (typeof callback == 'function') {
+                    this.onCloseEvent = callback;
+                }
+                break;
+            default:
+                throw new Error(`${event} is not a supported event`);
+                break;
+        }
+    }
+
+    /**
+     * 
+     * @param {WebNotification} notification
+     */
+    static Get(notification) {
+
+    }
+}
+
+
+
 
 // Load the settings file
 const XHR = new XMLHttpRequest();
@@ -45,10 +214,10 @@ XHR.onreadystatechange = function () {
                         break;
                     case "developerMode":
                         if (settings[a]) {
-                            $gnoti({
-                                Title: "$title",
-                                Text: "Keep in mind that property 'developerMode' is set to 'true'. This may cause bugs in the application. To disable 'developerMode', go to settings.json and edit the property to false.",
-                                Duration: 9000
+                            var noti = new WebNotification("Performance Log", "Developer Mode", "Keep in mind that developermode has been disabled. Some feature may be disabled. You also may experience some bugs. To disable developermode, go to settings and disable the option. After you have done this step, restart the application.", "../icons/icon_commandline_white.png", 10000);
+
+                            noti.On("click", function () {
+                                requestPage("settings");
                             });
                         } 
                         break;
@@ -133,18 +302,22 @@ $ga("<*>").forEach(function (element) {
     }
 });
 
-$g(".button-navbar-collapse-toggle").On("click", function () {
-    const icon = this.getElementsByTagName("img")[0];
-    if (navbar.HasClass("collapsed")) {
-        navbar.RemoveClass("collapsed");
-        appTabs.RemoveClass("expanded");
-        icon.src = '../icons/icon_arrowleft.png';
-    } else {
-        appTabs.AddClass("expanded")
-        navbar.AddClass("collapsed");
-        icon.src = '../icons/icon_arrowright.png';
-    }
-});
+const collapseButton = $g(".button-navbar-collapse-toggle");
+
+if (collapseButton !== undefined) {
+    collapseButton.On("click", function () {
+        const icon = this.getElementsByTagName("img")[0];
+        if (navbar.HasClass("collapsed")) {
+            navbar.RemoveClass("collapsed");
+            appTabs.RemoveClass("expanded");
+            icon.src = '../icons/icon_arrowleft.png';
+        } else {
+            appTabs.AddClass("expanded")
+            navbar.AddClass("collapsed");
+            icon.src = '../icons/icon_arrowright.png';
+        }
+    });
+}
 
 function addClassOnTimeout(index, element, className, delay) {
     setTimeout(function () {
@@ -155,7 +328,9 @@ function addClassOnTimeout(index, element, className, delay) {
 for (var a in hash) {
     switch (hash[a]) {
         case "noloader":
-            loader.AddClass("hidden");
+            if (typeof loader !== 'undefined') {
+                loader.AddClass("hidden");
+            }
             break;
 
     }
@@ -163,14 +338,16 @@ for (var a in hash) {
 
 window.addEventListener("load", function () {
     this.setTimeout(function () {
-        loader.AddClass("animate");
+        if (typeof loader !== 'undefined') {
+            loader.AddClass("animate");
 
-        for (var i = 0; i < loaderGridCol.length; i++) {
-            addClassOnTimeout(i, loaderGridCol[i], 'animate', 100);
+            for (var i = 0; i < loaderGridCol.length; i++) {
+                addClassOnTimeout(i, loaderGridCol[i], 'animate', 100);
+            }
+
+            setTimeout(function () {
+                loader.AddClass("hidden");
+            }, loaderGridCol.length * 100 + 1000);
         }
-
-        setTimeout(function () {
-            loader.AddClass("hidden");
-        }, loaderGridCol.length * 100 + 1000);
     }, 2000);
 });

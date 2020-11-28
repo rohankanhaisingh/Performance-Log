@@ -27,16 +27,10 @@ toggles.forEach(function (toggle) {
             this.classList.add("active");
         }
 
-        $gnoti({
-            Title: "$title", 
-            Text: "You might restart the application for some settings. Do you want to restart the application?",
-            Duration: 4000,
-            Button: {
-                Accept: function () {
-                    socket.emit("process.exit", {});
-                },
-                Cancel: true
-            }
+        let Noti = new WebNotification("Performance Log", "Settings", "You may have to restart this application in order to experience the changes you have made. Do you want to restart this application", "../icons/bruh.jpeg", 10000);
+
+        Noti.On("click", function () {
+            socket.emit("process.exit", {});
         });
 
         socket.emit("settingChange", {
@@ -48,7 +42,7 @@ toggles.forEach(function (toggle) {
 });
 
 // Make the toggles active or not based on the info in the settings file
-$gxhr("../user/settings.json", function (response) {
+g.XHLoad("../user/settings.json", function (response) {
     let parsedText = JSON.parse(response.text);
     let element;
 

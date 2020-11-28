@@ -23,8 +23,18 @@ const listen = socket => {
         });
     });
 
-    // Event when user disconnected from the server
+    // Give a notification in-web if the server has a warning.
+    socket.on("serverWarningNotification", data => {
+        let noti = new WebNotification("Performance Log", data.subject, data.message, null, 6000).On("click", () => {
+            socket.emit("requestPage", {
+                page: "settings",
+                time: Date.now(),
+                id: socket.id
+            });
+        });
+    });
 
+    // Event when user disconnected from the server
     socket.on("disconnect", function () {
         socket.emit("disconnect", {});
     });

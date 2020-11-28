@@ -26,6 +26,7 @@
     <meta property="fb:app_id" content="118746002172806">
     <meta property="og:type" content="website">
     <title>Performance Log</title>
+    <link href="../icons/favicon.png" rel="icon" />
     <link href="../style/index.css" rel="stylesheet" type="text/css" />
 
     <!-- Static stylesheets -->
@@ -34,11 +35,22 @@
     <link href="../style/static.stickytopnav.css" rel="stylesheet" type="text/css" />
     <link href="../style/static.loader.css" rel="stylesheet" type="text/css">
     <link href="../style/static.tab.css" rel="stylesheet" type="text/css" />
+    <link href="../style/static.essentials.css" rel="stylesheet" type="text/css" />
 
     <!-- Font loader -->
     <link href="../fonts/index.css" rel="stylesheet" type="text/css" />
 </head>
 <body class="essentials-loader essentials-themetoggle essentials-event-buttonAction gjs-body fireview-loaded body-static no-scroll">
+    <div class="notification-overlay">
+        <div class="container">
+            <div class="notification-overlay-backdrop"></div>
+            <div class="notification-overlay-scroller">
+                <div class="container">
+
+                </div>
+            </div>
+        </div>
+    </div>
     <div class="app">
         <div class="container">
             <div class="app-loader static-loader">
@@ -129,7 +141,7 @@
                                 <div class="navbar-scroller">
                                     <div class="navbar-hidebutton">
                                         <div class="navbar-hidebutton-icon button-navbar-collapse-toggle" button-action="navbar-collapse-toggle">
-                                            <img src="../icons/icon_arrowleft.png"/>
+                                            <img src="../icons/icon_arrowleft.png" />
                                         </div>
                                         <div class="navbar-hidebutton-text">
                                             <span>HIDE MENU</span>
@@ -263,9 +275,9 @@
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.3.0/socket.io.js"></script>
     <script src="../js/g.js"></script>
-    <script>$g = g.Selector, $ga = g.All; $gnoti = g.Notification; $gxhr = g.XHRLoad;</script>
+    <script>var $g = g.Selector, $ga = g.All, $gnoti = g.Notification, $gxhr = g.XHRLoad, $gcreat = g.CreateElement;</script>
     <script src="../js/jquery.js"></script>
     <script src="../js/main/index.js" type="module"></script>
-    <script src="../js/static.essentials.js" type="module"></script>
+    <script src="../js/static.essentials.js"></script>
 </body>
 </html>

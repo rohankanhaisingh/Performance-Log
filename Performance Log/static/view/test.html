@@ -1,0 +1,51 @@
+﻿<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <link href="../style/index.css" rel="stylesheet" type="text/css" />
+
+    <!-- Static stylesheets -->
+    <link href="../style/static.background.css" rel="stylesheet" type="text/css" />
+    <link href="../style/static.navbar.css" rel="stylesheet" type="text/css" />
+    <link href="../style/static.stickytopnav.css" rel="stylesheet" type="text/css" />
+    <link href="../style/static.loader.css" rel="stylesheet" type="text/css">
+    <link href="../style/static.tab.css" rel="stylesheet" type="text/css" />
+    <link href="../style/static.essentials.css" rel="stylesheet" type="text/css" />
+
+    <!-- Font loader -->
+    <link href="../fonts/index.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+    <div class="app"></div>
+
+    <div class="notification-overlay">
+        <div class="container">
+            <div class="notification-overlay-backdrop"></div>
+            <div class="notification-overlay-scroller">
+                <div class="container">
+                   
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.3.0/socket.io.js"></script>
+    <script src="../js/g.js"></script>
+    <script>$g = g.Selector, $ga = g.All; $gnoti = g.Notification; $gxhr = g.XHLoad; $gcreat = g.CreateElement; $alert = g.Alert;</script>
+    <script src="../js/static.essentials.js"></script>
+    <script>
+        function a() {
+            var noti1 = new WebNotification("Performance Log", "Developer Mode", "Keep in mind that developermode has been disabled. Some feature may be disabled. You also may experience some bugs. To disable developermode, go to settings and disable the option. After you have done this step, restart the application.", "../icons/icon_commandline_white.png", 10000);
+            noti1.On("click", function () {
+                a();
+            });
+        }
+        for (var i = 0; i < 22; i++) {
+            a();
+        }
+    </script>
+</body>
+</html>

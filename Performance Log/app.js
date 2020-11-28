@@ -21,20 +21,28 @@ const request = require("./server/js/request");
 const systeminfo = require("./server/js/systeminfo");
 const settings = require("./server/js/settingsHandler");
 
+// Discord.js
+const discord = require("./server/js/discordPresence");
+
+
 // Create a localserver.
 var app = express();
 app.use(express.static('./static', { extensions: ['html'] }));
 var server = app.listen(8000);
 var io = socket(server);
 
-
-var dataInterval;
-
+var dataInterval, initializedRichPresence = false;
 
 io.sockets.on("connection", function (socket) {
 
     // Initialize socket handlers.
     request.initialize(socket);
+
+    if (!initializedRichPresence) {
+        initializedRichPresence = true;
+
+        discord.initialize(socket);
+    }
 
     // Function to receive the systeminformation from the systeminfo.js module.
     function getSystemInformation() {

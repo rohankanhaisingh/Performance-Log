@@ -8,10 +8,15 @@ const systeminfo = require("./systeminfo");
 const settings = require("./settingsHandler");
 const fs = require("fs");
 const { developerMode } = require("./settingsHandler");
+const { changePresence } = require("./discordPresence");
 
 
 let isSwitchingPage, page, processes = [];
 
+// Change the presence based on the page.
+const pres = page => {
+    changePresence("Browsing", `In-page: ${page}`);
+}
 
 // Initialize function. This function will be called when the user got connected to the server.
 function init(socket) {
@@ -22,7 +27,7 @@ function init(socket) {
             requestTime: pingTime,
             responseTime: Date.now()
         }
-        socket.emit("responseTime", obj);
+        socket.emit("responseTime", obj); 
     });
 
     // Handle pages that has been requested by the client (user) and send a response back to handle the page switch.
@@ -37,6 +42,8 @@ function init(socket) {
                     time: Date.now(),
                     message: "Page has been requested"
                 });
+
+                pres(page);
                 break;
             case "index":
                 // Direct the client (user) to the index page.
@@ -48,6 +55,8 @@ function init(socket) {
                     time: Date.now(),
                     message: "Page has been requested"
                 });
+
+                pres(page);
                 break;
             case "settings":
                 // Direct the client (user) to the settings page.
@@ -58,6 +67,8 @@ function init(socket) {
                     time: Date.now(),
                     message: "Page has been requested"
                 });
+
+                pres(page);
                 break;
             case "commandline":
                 // Direct the client (user) to the commandline page.
@@ -68,6 +79,8 @@ function init(socket) {
                     time: Date.now(),
                     message: "Page has been requested"
                 });
+
+                pres(page);
                 break;
             default:
                 // If none of these cases matches, send a message back that the request has been denied.
