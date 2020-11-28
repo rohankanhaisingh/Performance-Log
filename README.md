@@ -37,8 +37,8 @@ properties by yourself. Keep in mind that you have no errors in the settings fil
 ----------------------------------
 
 
-## New in version 0.5.2:
-	- Done rewriting the code of this entire project. Programmers are now able to read the code without figuring out what the code does.
+## New in version 0.7.2:
+	- Added a Discord Rich Presence feature to show your friends what you are doing on Performance Log.
 
 
 ## Ideas in mind that might come into the project (I am working on this):
