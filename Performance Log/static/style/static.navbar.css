@@ -20,7 +20,7 @@
         left: 0;
         z-index: 3;
         pointer-events: none;
-        box-shadow: 12px 3px 10px #dcdcdc;
+        box-shadow: 6px 9px 10px #dcdcdc;
     }
 
     .app-navbar.static-navbar .container {

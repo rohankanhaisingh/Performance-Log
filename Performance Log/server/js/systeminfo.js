@@ -18,7 +18,7 @@ var _events = {
 }
 
 const _cpu = {
-    initialize: function (callback) {
+    initialize: callback => {
         si.cpu(function (a) {
             osu.cpuUsage(function (b) {
                 if (typeof callback !== 'undefined' && typeof callback == 'function') {
@@ -27,7 +27,7 @@ const _cpu = {
             });
         });
     },
-    update: function (callback) {
+    update: callback => {
         osu.cpuUsage(function (b) {
             if (typeof callback !== 'undefined' && typeof callback == 'function') {
                 callback([b]);
@@ -37,7 +37,7 @@ const _cpu = {
 }
 
 const _ram = {
-    initialize: function (callback) {
+    initialize: callback => {
         si.memLayout().then(function (a) {
             si.mem().then(function (b) {
                 if (typeof callback !== 'undefined' && typeof callback == 'function') {
@@ -46,7 +46,7 @@ const _ram = {
             });
         });
     },
-    update: function(callback) {
+    update: callback => {
         si.mem().then(function (b) {
             if (typeof callback !== 'undefined' && typeof callback == 'function') {
                 callback([b]);
@@ -56,7 +56,7 @@ const _ram = {
 }
 
 const _disk = {
-    intialize: function (callback) {
+    intialize: callback => {
         si.diskLayout().then(function (a) {
             si.fsSize().then(function (b) {
                 if (typeof callback == 'function') {
@@ -68,7 +68,7 @@ const _disk = {
 }
 
 const _battery = {
-    initialize: function (callback) {
+    initialize: callback =>  {
         si.battery().then(function (data) {
             if (typeof callback == 'function') {
                 callback(data);
@@ -77,6 +77,33 @@ const _battery = {
     },
     update: function (callback) {
 
+    }
+}
+
+const _audio = {
+    audioStream: callback => {
+        let audioStream = require("child_process").spawn("test.audiostream.bat");
+
+        audioStream.stdout.on("data", data => {
+            if (typeof callback == 'function') {
+                callback(data);
+            }
+        });
+
+        audioStream.stdin.end();
+    },
+    audioLevel: callback => {
+        let audioLevel = require("child_process").spawn("test.audiolevel.bat");
+
+        audioLevel.stdout.on("data", data => {
+            if (typeof callback == 'function') {
+                callback(data);
+
+                audioLevel.kill("SIGKILL");
+            }
+        });
+
+        audioLevel.stdin.end();
     }
 }
 
@@ -130,5 +157,6 @@ module.exports = {
     ram: _ram,
     disk: _disk,
     all: _all,
-    battery: _battery
+    battery: _battery,
+    audio: _audio
 }

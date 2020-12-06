@@ -206,27 +206,41 @@
                                     <div class="settings-group">
                                         <div class="settings-item toggle">
                                             <div class="settings-item-name">
-                                                <span>DEVELOPERMODE</span>
+                                                <span>Developermode</span>
                                             </div>
                                             <div class="settings-item-toggle developerMode" toggle-name="developermode" toggle-value="false"></div>
                                         </div>
                                         <div class="settings-item toggle">
                                             <div class="settings-item-name">
-                                                <span>DARK THEME</span>
+                                                <span>Dark-theme</span>
                                             </div>
                                             <div class="settings-item-toggle theme" toggle-name="darktheme" toggle-value="false"></div>
                                         </div>
                                         <div class="settings-item toggle">
                                             <div class="settings-item-name">
-                                                <span>SITE LOADER</span>
+                                                <span>Site-loader</span>
                                             </div>
                                             <div class="settings-item-toggle siteLoader" toggle-name="siteLoader" toggle-value="false"></div>
                                         </div>
                                         <div class="settings-item toggle">
                                             <div class="settings-item-name">
-                                                <span>BACKGROUND VIDEO</span>
+                                                <span>Background-video</span>
                                             </div>
                                             <div class="settings-item-toggle backgroundVideo" toggle-name="backgroundVideo" toggle-value="false"></div>
+                                        </div>
+                                    </div>
+                                    <div class="settings-section" section-name="DISCORD RICH PRESENCE">
+                                        <div class="settings-section-item">
+                                            <div class="settings-section-item-title">
+                                                <span>Enable Discord-Rich-Presence <a href="./howto/discordrichpresence.html" title="How to enable Discord RPC step by step.">?</a></span>
+                                            </div>
+                                            <div class="settings-item-toggle useDiscordPresence" toggle-name="richPresence" toggle-value="false"></div>
+                                        </div>
+                                        <div class="settings-section-item">
+                                            <div class="settings-section-item-title">
+                                                <span>Discord-Rich-Presence client ID</span>
+                                            </div>
+                                            <div class="settings-section-item-input discordPresenceClientID" placeholder="Enter your client ID" contenteditable="true" input-name="richPresenceClientID"></div>
                                         </div>
                                     </div>
                                 </div>
@@ -243,6 +257,6 @@
     <script>var $g = g.Selector, $ga = g.All, $gnoti = g.Notification, $gxhr = g.XHRLoad, $gcreat = g.CreateElement;</script>
     <script src="../js/jquery.js"></script>
     <script src="../js/settings/index.js" type="module"></script>
-    <script src="../js/static.essentials.js"></script>
+    <script src="../js/static.essentials.js" type="module"></script>
 </body>
 </html>

@@ -59,5 +59,15 @@
       "Exit -PreventLogs",
       "Exit -RickRollMode"
     ]
+  },
+  "Echo": {
+    "description": "Returns a given text",
+    "arguments": [ "Color [string]", "Background [string]" ],
+    "commandListItems": [
+      "Echo &quot;My text here&quot;",
+      "Echo &quot;My text here&quot; -Color &quot;red&quot;",
+      "Echo &quot;My text here&quot; -Color &quot;red&quot; -Background &quot;blue&quot;",
+      "Echo &quot;$new Date()&quot; -Color &quot;red&quot; -Background &quot;blue&quot;"
+    ]
   }
 }

@@ -87,10 +87,11 @@
     right: 0;
     bottom: 0;
     z-index: 1;
+    display: none;
     margin: auto;
 }
 
-    .loader-spinner-spin:nth-child(even) {
+ /*   .loader-spinner-spin:nth-child(even) {
         -moz-animation: loader-spinner-spin-animation 1s linear infinite;
         -o-animation: loader-spinner-spin-animation 1s linear infinite;
         -webkit-animation: loader-spinner-spin-animation 1s linear infinite;
@@ -101,7 +102,7 @@
         -o-animation: loader-spinner-spin-animation-reverse 1s linear infinite;
         -webkit-animation: loader-spinner-spin-animation-reverse 1s linear infinite;
         animation: loader-spinner-spin-animation-reverse 1s linear infinite;
-    }
+    }*/
 
 @keyframes loader-spinner-spin-animation {
     0% {

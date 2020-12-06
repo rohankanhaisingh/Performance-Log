@@ -15,7 +15,6 @@ const listen = socket => {
 
     // Accepting a page request.
     socket.on("acceptPageRequest", function (data) {
-        console.log(data);
         location.href = `./${data.page}`;
         socket.emit("handlePageSwitch", {
             time: Date.now(),

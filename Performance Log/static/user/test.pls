@@ -1,5 +1,6 @@
+#NoEcho
+
 StartScript
-@NoOuput
 
 ReadFile -Path "../user/settings.json" -StoreAs "Settings"
 Bind -Key "CTRL+S" -Action Output

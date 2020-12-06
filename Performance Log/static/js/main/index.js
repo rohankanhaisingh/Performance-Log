@@ -1,11 +1,14 @@
 import { FireView } from '../fireview/index.js';
 import * as sh from './sockethandler.js';
 import { CanvasContext } from './canvascontext.js';
+import * as essentials from '../static.essentials.js';
 
 // Connect the client (user) to the server.
 const socket = io.connect("http://localhost:8000/");
 
 sh.listen(socket);
+essentials.listen(socket);
+
 
 // Give the server a signal that the client (user) has connected. The client also ask the server to send information about the system itself (memory, processor and disk).
 socket.emit("clientConnect", {
@@ -86,7 +89,7 @@ const handleUpdatedData = d => {
     }
 }
 
-
+socket.emit("audioStreamGet", {});
 
 // Export functions from this file to other modules.
 

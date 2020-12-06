@@ -139,6 +139,7 @@ const listen = (element) => {
                         // If the user is not selecting in the command list.
                         if (!inputEvents.isSelecting) {
                             plCommandHandler.handle(this.innerText); // Handle the command.
+                            //console.log(this.innerText);
 
                             this.innerText = ""; // Clear the input field.
                         } else {

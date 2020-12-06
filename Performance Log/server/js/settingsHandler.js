@@ -63,6 +63,18 @@ function _changeSettings(data) {
             _write();
 
             break;
+        case "richPresence":
+
+            a.useDiscordPresence = data.value;
+            _write();
+            break;
+        case "richPresenceClientID":
+
+            console.log(true);
+
+            a.discordPresenceClientID = data.value;
+            _write();
+            break;
     }
 
     // Write the json file.

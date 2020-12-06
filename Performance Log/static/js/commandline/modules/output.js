@@ -119,7 +119,9 @@ const createInputMessage = (type, content) => {
             default:
                 // If none of these cases matches.
 
-                out += arg;
+                //console.log(arg);
+
+                //out += arg;
 
                 break;
         }

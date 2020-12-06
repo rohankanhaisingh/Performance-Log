@@ -13,6 +13,7 @@ socket.emit("clientConnect", {
 // Make the toggles interactive
 
 const toggles = $ga(".settings-item-toggle");
+const inputFields = $ga(".settings-section-item-input");
 
 toggles.forEach(function (toggle) {
     toggle.addEventListener("click", function () {
@@ -27,9 +28,7 @@ toggles.forEach(function (toggle) {
             this.classList.add("active");
         }
 
-        let Noti = new WebNotification("Performance Log", "Settings", "You may have to restart this application in order to experience the changes you have made. Do you want to restart this application", "../icons/bruh.jpeg", 10000);
-
-        Noti.On("click", function () {
+        new WebNotification("Performance Log", "Settings", "You may have to restart this application in order to experience the changes you have made. Do you want to restart this application", "../icons/bruh.jpeg", 10000).On("click", function () {
             socket.emit("process.exit", {});
         });
 
@@ -38,6 +37,27 @@ toggles.forEach(function (toggle) {
             value: _value,
             time: Date.now(),
         });
+    });
+});
+
+inputFields.forEach(function (input) {
+    input.addEventListener("keyup", function () {
+        let val = this.innerText;
+        let name = this.getAttribute("input-name");
+
+        if (val !== "") {
+            socket.emit("settingChange", {
+                type: name,
+                value: val,
+                time: Date.now(),
+            });
+        } else {
+            socket.emit("settingChange", {
+                type: name,
+                value: null,
+                time: Date.now(),
+            });
+        }
     });
 });
 
@@ -57,11 +77,19 @@ g.XHLoad("../user/settings.json", function (response) {
                     element.AddClass("active");
                 }
             }
-            else if (typeof parsedText[item] == 'string') {
+        }
+
+        switch (item) {
+            case "theme":
                 if (parsedText[item] == 'dark') {
                     element.AddClass("active");
                 }
-            }
+                break;
+            case "discordPresenceClientID":
+                if (parsedText[item] !== null) {
+                    element.innerText = parsedText[item];
+                }
+                break;
         }
     }
 });

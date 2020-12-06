@@ -1,0 +1,12 @@
+{
+  "name": "Performance Log - Edge Extension",
+  "version": "0.0.0.1",
+  "manifest_version": 2,
+  "description": "A Edge (Chromium) extension combined with Performance Log",
+  "icons": {
+    "16": "icons/favicon.png"
+  },
+  "browser_action": {
+    "default_popup": "view/main.html"
+  }
+}

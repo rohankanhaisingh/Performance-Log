@@ -35,7 +35,7 @@ body {
 
 .notification-overlay-scroller .container {
     overflow: hidden;
-    pointer-events: all;
+    pointer-events: none;
 }
 
 
@@ -47,7 +47,7 @@ body {
     right: 10px;
     pointer-events: all;
     z-index: 1;
-    background: rgb(0 0 0 / 0.4);
+    background: rgb(0 0 0 / 0.7);
     backdrop-filter: blur(20px);
     padding: 20px;
     -moz-transition: bottom .5s cubic-bezier(0, 1, 1, 1);

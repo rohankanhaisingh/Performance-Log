@@ -200,3 +200,72 @@
 .app.theme-simple-dark .topnav-itembox-item-content span {
     color: #fff;
 }
+
+.topnav-audiometer {
+    width: 180px;
+    height: 10px;
+    float: left;
+    margin-top: 30px;
+    margin-left: 50px;
+}
+
+    .topnav-audiometer .container {
+        background: #f7f7f7;
+    }
+
+        .topnav-audiometer .container:before {
+            width: auto;
+            height: auto;
+            content: "VOLUME";
+            position: absolute;
+            top: -13px;
+            left: 0;
+            font-family: 'Montserrat';
+            font-size: 10px;
+        }
+
+.audiometer-volume {
+    width: 54%;
+    height: 100%;
+    background: #e6e6e6;
+    position: relative;
+    content: "";
+    -moz-transition: width 3s ease;
+    -o-transition: width 3s ease;
+    -webkit-transition: width 3s ease;
+    transition: width 3s ease;
+}
+
+    .audiometer-volume:before {
+        width: 3px;
+        height: 100%;
+        position: absolute;
+        content: "";
+        top: 0;
+        right: -3px;
+        z-index: 1;
+        background: none;
+    }
+
+.audiometer-stream {
+    width: 0px;
+    height: 100%;
+    position: relative;
+    content: "";
+    background: #ff7171;
+    -moz-transition: width 0.1s ease;
+    -o-transition: width 0.1s ease;
+    -webkit-transition: width 0.1s ease;
+    transition: width 0.1s ease;
+}
+
+    .audiometer-stream:before {
+        width: auto;
+        height: auto;
+        content: attr(stream);
+        font-family: 'RobotoLight';
+        font-size: 8px;
+        position: absolute;
+        top: 0;
+        left: 0;
+    }

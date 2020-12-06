@@ -49,16 +49,38 @@
     <Content Include="server\js\systeminfo.js">
       <SubType>Code</SubType>
     </Content>
+    <Content Include="server\ps1\audiodevice.ps1" />
+    <Content Include="server\ps1\audiolevel.bat" />
+    <Content Include="server\ps1\audiolevel.ps1" />
+    <Content Include="server\ps1\audiostream.bat" />
     <Content Include="server\ps1\gpu.ps1" />
     <Content Include="server\ps1\temp.ps1" />
+    <Content Include="server\ps1\VolumeControl.cs" />
+    <Content Include="static\extension\edge\icons\favicon.png" />
+    <Content Include="static\extension\edge\manifest.json">
+      <SubType>Code</SubType>
+    </Content>
+    <Content Include="static\extension\edge\view\main.css">
+      <SubType>Code</SubType>
+    </Content>
+    <Content Include="static\extension\edge\view\main.html">
+      <SubType>Code</SubType>
+    </Content>
+    <Content Include="static\extension\edge\view\main.js">
+      <SubType>Code</SubType>
+    </Content>
     <Content Include="static\icons\bruh.jpeg" />
     <Content Include="static\icons\favicon.png" />
     <Content Include="static\icons\icon_linkopen.jpg" />
     <Content Include="static\icons\icon_linkopen.png" />
+    <Content Include="static\icons\icon_speaker.png" />
     <Content Include="static\js\commandline\index.js">
       <SubType>Code</SubType>
     </Content>
     <Content Include="static\js\commandline\modules\commands\commands.json">
+      <SubType>Code</SubType>
+    </Content>
+    <Content Include="static\js\commandline\modules\commands\Echo.js">
       <SubType>Code</SubType>
     </Content>
     <Content Include="static\js\commandline\modules\commands\Execute.js">
@@ -90,6 +112,9 @@
       <TestFramework>ExportRunner</TestFramework>
     </Content>
     <Content Include="static\js\energy\socketHandler.js">
+      <SubType>Code</SubType>
+    </Content>
+    <Content Include="static\js\static.dn.essentials.js">
       <SubType>Code</SubType>
     </Content>
     <Content Include="static\js\settings\index.js">
@@ -245,6 +270,9 @@
     <Content Include="static\user\test.pls" />
     <Content Include="static\videos\video_smoke_50fCaDVaVT3P.mp4" />
     <Content Include="static\videos\video_smoke_e8VnfRp1v7QL.mp4" />
+    <Content Include="static\view\howto\discordrichpresence.html">
+      <SubType>Code</SubType>
+    </Content>
     <Content Include="static\view\index.html">
       <SubType>Code</SubType>
     </Content>
@@ -260,6 +288,8 @@
     <Content Include="static\view\settings.html">
       <SubType>Code</SubType>
     </Content>
+    <Content Include="test.audiolevel.bat" />
+    <Content Include="test.audiostream.bat" />
     <Content Include="test.bungee.bat" />
     <Content Include="test.ngrok.bat" />
     <Content Include="test.spigot.bat" />
@@ -268,11 +298,15 @@
     <Folder Include="server\" />
     <Folder Include="server\js\" />
     <Folder Include="server\ps1\" />
+    <Folder Include="static\extension\edge\" />
+    <Folder Include="static\extension\edge\icons\" />
+    <Folder Include="static\extension\edge\view\" />
     <Folder Include="static\js\commandline\modules\" />
     <Folder Include="static\js\commandline\modules\commands\" />
     <Folder Include="static\js\energy\" />
     <Folder Include="static\js\commandline\" />
     <Folder Include="static\js\settings\" />
+    <Folder Include="static\extension\" />
     <Folder Include="static\user\" />
     <Folder Include="static\js\" />
     <Folder Include="server\messages\" />
@@ -290,6 +324,7 @@
     <Folder Include="static\style\" />
     <Folder Include="static\view\" />
     <Folder Include="static\" />
+    <Folder Include="static\view\howto\" />
   </ItemGroup>
   <Import Project="$(VSToolsPath)\Node.js Tools\Microsoft.NodejsToolsV2.targets" />
 </Project>

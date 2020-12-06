@@ -24,16 +24,15 @@ const settings = require("./server/js/settingsHandler");
 // Discord.js
 const discord = require("./server/js/discordPresence");
 
-
 // Create a localserver.
-var app = express();
+const app = express();
 app.use(express.static('./static', { extensions: ['html'] }));
-var server = app.listen(8000);
-var io = socket(server);
+const server = app.listen(8000);
+const io = socket(server);
 
-var dataInterval, initializedRichPresence = false;
+let dataInterval, initializedRichPresence = false, audioStreamInterval = false;
 
-io.sockets.on("connection", function (socket) {
+io.sockets.on("connection", socket => {
 
     // Initialize socket handlers.
     request.initialize(socket);
@@ -42,6 +41,24 @@ io.sockets.on("connection", function (socket) {
         initializedRichPresence = true;
 
         discord.initialize(socket);
+    }
+
+    if (!audioStreamInterval) {
+        audioStreamInterval = true;
+
+        // No need to create a interval function for this. The powershell script already has a interval function.
+        systeminfo.audio.audioStream(stream => {
+            // Get the audio stream value and send it to the client.
+
+            socket.emit("audioStreamSend", { d: ` ${stream}` });
+        });
+
+
+        let interval = setInterval(() => {
+            systeminfo.audio.audioLevel(level => {
+                socket.emit("audioLevelSend", { d: ` ${level}` });
+            });
+        }, 3000);
     }
 
     // Function to receive the systeminformation from the systeminfo.js module.

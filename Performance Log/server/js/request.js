@@ -9,6 +9,7 @@ const settings = require("./settingsHandler");
 const fs = require("fs");
 const { developerMode } = require("./settingsHandler");
 const { changePresence } = require("./discordPresence");
+const { stdout, stdin } = require("process");
 
 
 let isSwitchingPage, page, processes = [];
@@ -271,5 +272,5 @@ module.exports = {
     initialize: init,
     isSwitchingPage: isSwitchingPage,
     page: page,
-    time: Date.now()
+    time: Date.now(),
 }

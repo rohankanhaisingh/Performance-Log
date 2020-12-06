@@ -12,6 +12,35 @@ const navbar = $g(".app-navbar");
 const appTabs = $g(".tab-main");
 const hash = location.href.substring(location.href.indexOf("?") + 1).split("&");
 
+const listen = (socket) => {
+
+    // Get the audiostream value from the server.
+    socket.on("audioStreamSend", data => {
+
+        let value = parseInt(data.d); // Convert the string into a int.
+
+        let audioStreamMeter = $g(".audiometer-stream");
+
+        // Check if the value is not equal to NaN.
+        if (!isNaN(value)) {
+            audioStreamMeter.Css("width", `${value}%`);
+            audioStreamMeter.setAttribute("stream", value);
+        }
+    });
+
+    socket.on("audioLevelSend", data => {
+        let value = parseInt(data.d); // Convert the string into a int.
+
+        let audioLevelMeter = $g(".audiometer-volume");
+
+        // Check if the value is not equal to NaN.
+        if (!isNaN(value)) {
+            audioLevelMeter.Css("width", `${value}%`);
+        }
+    });
+}
+
+
 // Notification
 
 const notificationContainer = $g(".container in .notification-overlay-scroller");
@@ -265,7 +294,7 @@ XHR.open("GET", '../user/settings.json');
 XHR.send(null);
 
 // Toggle theme
-function toggleTheme() {
+const toggleTheme = () => {
     if (body.HasClass("essentials-themetoggle")) {
         if (app.HasClass("theme-dark")) {
             app.RemoveClass("theme-dark");
@@ -319,7 +348,7 @@ if (collapseButton !== undefined) {
     });
 }
 
-function addClassOnTimeout(index, element, className, delay) {
+const addClassOnTimeout = (index, element, className, delay) => {
     setTimeout(function () {
         element.classList.add(className);
     }, index * delay);
@@ -337,17 +366,22 @@ for (var a in hash) {
 }
 
 window.addEventListener("load", function () {
-    this.setTimeout(function () {
-        if (typeof loader !== 'undefined') {
-            loader.AddClass("animate");
+    if (typeof loader !== 'undefined') {
+        loader.AddClass("animate");
+
+        for (var i = 0; i < loaderGridCol.length; i++) {
+            addClassOnTimeout(i, loaderGridCol[i], 'animate', 100);
+        }
+
+        setTimeout(function () {
+            loader.AddClass("hidden");
 
             for (var i = 0; i < loaderGridCol.length; i++) {
-                addClassOnTimeout(i, loaderGridCol[i], 'animate', 100);
+                loaderGridCol[i].classList.remove("animate");
             }
 
-            setTimeout(function () {
-                loader.AddClass("hidden");
-            }, loaderGridCol.length * 100 + 1000);
-        }
-    }, 2000);
+        }, loaderGridCol.length * 100 + 1000);
+    }
 });
+
+export { listen };
