@@ -9,7 +9,6 @@ const socket = io.connect("http://localhost:8000/");
 sh.listen(socket);
 essentials.listen(socket);
 
-
 // Give the server a signal that the client (user) has connected. The client also ask the server to send information about the system itself (memory, processor and disk).
 socket.emit("clientConnect", {
     page: 'index',

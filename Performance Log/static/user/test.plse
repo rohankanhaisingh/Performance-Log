@@ -1,0 +1,40 @@
+$MyInteger: int 5;
+$MyString: string "Yooo, what's up";
+$MyBool: bool false;
+$MyArray: object [];
+
+action SayHi (string name, int age) {
+	$name, $age;
+	
+	return `Hello @{$name} who is @{$age} years old.`;
+}
+
+Console-Output(SayHi("Bruh", 69));
+
+class Car {
+	constructor {
+		Type: undefined;
+		Color: undefined;
+		Destination: undefined
+	}
+	SetDestination(string destination, string shortcut) {
+		$destination, $shortcut;
+		
+		this.Destination: $destination;
+		
+		Console-Output(`Destination has been set to @{ $destination } with a shortcut from @{ $shortcut }`);
+	}
+	RemoveDestination(string destination) {
+		remove this.Destination;
+	}
+}
+
+$MyCar: new Car -Type "Volvo" -Color "Red";
+
+$MyCar -SetDestination("Amsterdam", "A16") -RemoveDestination("Rotterdam");
+
+$MyCar --Prototype.Bruh: action (string bruh1, string bruh2, int bruh3) {
+	$bruh1, $bruh2, $bruh3;
+}
+
+$MyCar -Bruh("Bruhh", "Oof", 420);

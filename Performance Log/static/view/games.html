@@ -26,11 +26,11 @@
     <meta property="fb:app_id" content="118746002172806">
     <meta property="og:type" content="website">
     <title>Performance Log</title>
-    <link href="../icons/favicon.png" rel="icon"/>
+    <link href="../icons/favicon.png" rel="icon" />
     <link href="../style/index.css" rel="stylesheet" type="text/css" />
 
     <!-- Specific stylesheets -->
-    <link href="../style/single.energy.css" rel="stylesheet" type="text/css" />
+    <link href="../style/single.games.css" rel="stylesheet" type="text/css" />
 
     <!-- Static stylesheets -->
     <link href="../style/static.background.css" rel="stylesheet" type="text/css" />
@@ -43,7 +43,7 @@
     <!-- Font loader -->
     <link href="../fonts/index.css" rel="stylesheet" type="text/css" />
 </head>
-<body class="essentials-loader essentials-themetoggle essentials-event-buttonAction gjs-body fireview-loaded body-static no-scroll">
+<body class="essentials-loader essentials-themetoggle essentials-event-buttonAction gjs-body fireview-loaded body-static no-scroll essentials-notification">
     <div class="notification-overlay">
         <div class="container">
             <div class="notification-overlay-backdrop"></div>
@@ -54,6 +54,7 @@
             </div>
         </div>
     </div>
+
     <div class="app">
         <div class="container">
             <div class="app-loader static-loader">
@@ -90,7 +91,6 @@
                     </div>
                 </div>
             </div>
-
             <div class="app-background static-background">
                 <div class="container static-background-container container-main-background">
                     <!--<div class="background-header background-01"></div>-->
@@ -99,7 +99,6 @@
                     </div>
                 </div>
             </div>
-
             <div class="app-foreground">
                 <div class="container">
                     <div class="app-sticky-topnav">
@@ -109,7 +108,7 @@
                             </div>
                             <div class="topnav-vl"></div>
                             <div class="topnav-description">
-                                <span style="font-family: monospace; font-size: 12px;">[$g(System.Admin.DesktopName)]</span>
+                                <span>By Rohan Kanhaisingh</span>
                             </div>
                             <div class="topnav-vl"></div>
                             <div class="topnav-itembox">
@@ -138,7 +137,6 @@
                             </div>
                         </div>
                     </div>
-
                     <div class="app-main">
                         <div class="app-navbar static-navbar">
                             <div class="container">
@@ -159,7 +157,7 @@
                                             <span>PERFORMANCE</span>
                                         </div>
                                     </div>
-                                    <div class="navbar-button active">
+                                    <div class="navbar-button" button-action="requestPage:energy">
                                         <div class="navbar-button-icon">
                                             <img src="../icons/icon_battery.png" style=" width: 20px;" />
                                         </div>
@@ -167,7 +165,7 @@
                                             <span>ENERGY USAGE</span>
                                         </div>
                                     </div>
-                                    <div class="navbar-button" button-action="requestPage:games">
+                                    <div class="navbar-button active" button-action="requestPage:games">
                                         <div class="navbar-button-icon">
                                             <img src="../icons/icon_joystick.png" style="" />
                                         </div>
@@ -183,7 +181,7 @@
                                             <span>COMMAND LINE</span>
                                         </div>
                                     </div>
-                                    <div class="navbar-button" button-action="requestPage:settings">
+                                    <div class="navbar-button">
                                         <div class="navbar-button-icon">
                                             <img src="../icons/icon_settings.png" style="" />
                                         </div>
@@ -195,45 +193,28 @@
                             </div>
                         </div>
                         <div class="app-tabs static-tabs">
-                            <div class="container">
-                                <div class="tab tab-energy tab-main" tab-name="energy">
-                                    <div class="tab-fluid tabtitle">
-                                        <div class="tab-tabtitle">
-                                            <span>ENERGY USAGE</span>
-                                        </div>
-                                        <div class="tab-tabtitle-hl"></div>
+                            <div class="tab tab-games tab-main" tab-name="games">
+                                <div class="tab-fluid tabtitle">
+                                    <div class="tab-tabtitle">
+                                        <span>GAMES</span>
                                     </div>
-                                    <div class="tab-fluid">
-                                        <div class="tab-fluid-energy single-energy">
-                                            <div class="container">
-                                                <div class="big-battery-container">
+                                    <div class="tab-tabtitle-hl"></div>
+                                    <div class="games-model-filter">
+                                        <div class="container input-field games-model-filter-inputfield" contenteditable="true" spellcheck="false" placeholder="Enter the name or tags of a game."></div>
+                                    </div>
+                                </div>
+                                <div class="tab-fluid single-games">
+                                    <div class="container">
+                                        <div class="models-row models-scroller">
+                                            <div class="models-scroller-angle"></div>
+                                            <div class="models-scroller-angle">
+                                                <div class="models-scroller-addmodel">
                                                     <div class="container">
-                                                        <div class="big-battery">
-                                                            <div class="battery-level">
-                                                                <div class="container battery-level-waves">
-                                                                    <div class="battery-level-waves-wave"></div>
-                                                                    <div class="battery-level-waves-wave"></div>
-                                                                    <div class="battery-level-fixedbg"></div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="battery-overlay">
-                                                                <div class="battery-overlay-header">
-                                                                    <div class="container">
-                                                                        <div class="battery-overlay-header-percentage">
-                                                                            <span></span>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
+                                                        <div class="addmodel-plus button"></div>
+                                                        <div class="addmodel-text">
+                                                            <span>ADD A GAME</span>
                                                         </div>
                                                     </div>
-                                                </div>
-                                                <div class="battery-info">
-                                                    <div class="battery-info-title">
-                                                        <span>BATTERY INFORMATION</span>
-                                                    </div>
-                                                    <div class="battery-info-hl"></div>
-                                                    <div class="battery-info-list"></div>
                                                 </div>
                                             </div>
                                         </div>
@@ -251,7 +232,7 @@
     <script src="../js/g.js"></script>
     <script>var $g = g.Selector, $ga = g.All, $gnoti = g.Notification, $gxhr = g.XHRLoad, $gcreat = g.CreateElement;</script>
     <script src="../js/jquery.js"></script>
+    <script src="../js/games/index.js" type="module"></script>
     <script src="../js/static.essentials.js" type="module"></script>
-    <script src="../js/energy/index.js" type="module"></script>
 </body>
 </html>

@@ -80,9 +80,11 @@ const _battery = {
     }
 }
 
+let audioStream;
+
 const _audio = {
     audioStream: callback => {
-        let audioStream = require("child_process").spawn("test.audiostream.bat");
+        audioStream = require("child_process").spawn("test.audiostream.bat");
 
         audioStream.stdout.on("data", data => {
             if (typeof callback == 'function') {
@@ -99,11 +101,18 @@ const _audio = {
             if (typeof callback == 'function') {
                 callback(data);
 
-                audioLevel.kill("SIGKILL");
+                audioLevel.kill();
             }
         });
 
         audioLevel.stdin.end();
+    },
+    destroy: function () {
+        try {
+            audioStream.kill();
+        } catch (err) {
+            console.log(err.message);
+        }
     }
 }
 

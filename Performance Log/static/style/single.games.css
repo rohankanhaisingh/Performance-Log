@@ -1,0 +1,373 @@
+.models-row {
+    width: 100%;
+    height: 510px;
+    padding: 20px 0px;
+    white-space: nowrap;
+    overflow-x: scroll;
+    overflow-y: hidden;
+}
+
+    .models-row.models-scroller {
+        perspective: 100vw;
+        user-select: none;
+        cursor: grab;
+    }
+
+    .models-row.models-scroller::-webkit-scrollbar {
+        height: 8px;
+    }
+
+
+.models-scroller-angle {
+    width: auto;
+    height: 100%;
+    margin-left: -5vw;
+    width: 105vw;
+    padding-left: 7vw;
+    display: contents;
+    white-space: nowrap;
+}
+
+.games-model {
+    width: 350px;
+    height: calc(100%);
+    border: 1px solid none;
+    margin: 0px 20px;
+    display: inline-block;
+    content: "";
+    position: relative;
+    background: none;
+    box-shadow: 10px 9px 10px transparent;
+    -moz-transition: transform 1s, box-shadow 1s cubic-bezier(0, 1, 1, 1);
+    -o-transition: transform 1s, box-shadow 1s cubic-bezier(0, 1, 1, 1);
+    -webkit-transition: transform 1s, box-shadow 1s cubic-bezier(0, 1, 1, 1);
+    transition: transform 1s, box-shadow 1s cubic-bezier(0, 1, 1, 1);
+}
+    .games-model:before {
+        width: auto;
+        height: auto;
+        content: attr(card-name);
+        position: absolute;
+        top: 10px;
+        left: 10px;
+        z-index: 5;
+        font-family: Montserrat;
+        padding: 5px 10px;
+        font-size: 12px;
+        border-radius: 30px;
+        background: #fff;
+    }
+    .games-model:after {
+        width: auto;
+        height: auto;
+        content: "LAST PLAYED: " attr(card-lastplayed);
+        position: absolute;
+        top: 45px;
+        left: 10px;
+        z-index: 5;
+        font-family: Montserrat;
+        padding: 5px 10px;
+        font-size: 8px;
+        border-radius: 30px;
+        background: #fff;
+        opacity: 0;
+        -moz-transition: all 0.3s ease;
+        -o-transition: all 0.3s ease;
+        -webkit-transition: all 0.3s ease;
+        transition: all 0.3s ease;
+    }
+
+    .games-model.remove {
+        position: absolute;
+        z-index: 10;
+        opacity: 0;
+        -moz-transform: scale(0.4);
+        -ms-transform: scale(0.4);
+        -o-transform: scale(0.4);
+        -webkit-transform: scale(0.4);
+        transform: scale(0.4);
+        -moz-animation: games-model-remove 0.5s ease;
+        -o-animation: games-model-remove 0.5s ease;
+        -webkit-animation: games-model-remove 0.5s ease;
+        animation: games-model-remove 0.5s ease;
+    }
+
+    .games-model.hidden {
+        -moz-filter: blur(5px) grayscale(100%);
+        -ms-filter: blur(5px) grayscale(100%);
+        -webkit-filter: blur(5px) grayscale(100%);
+        filter: blur(5px) grayscale(100%);
+        -moz-transform: scale(0.9);
+        -ms-transform: scale(0.9);
+        -o-transform: scale(0.9);
+        -webkit-transform: scale(0.9);
+        transform: scale(0.9);
+        pointer-events: none;
+    }
+
+    @keyframes games-model-remove {
+        0% {
+        opacity: 1;
+        -moz-transform: scale(1);
+        -ms-transform: scale(1);
+        -o-transform: scale(1);
+        -webkit-transform: scale(1);
+        transform: scale(1);
+    }
+    100% {
+        opacity: 0;
+        -moz-transform: scale(0.5);
+        -ms-transform: scale(0.5);
+        -o-transform: scale(0.5);
+        -webkit-transform: scale(0.5);
+        transform: scale(0.5);
+    }
+}
+
+.model-background {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+}
+
+    .model-background img {
+        width: 100%;
+        height: 100%;
+        position: relative;
+        user-select: none;
+    }
+
+.model-foreground {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 2;
+    backdrop-filter: blur(100px);
+}
+
+.model-image {
+    width: 100%;
+    height: 180px;
+    position: relative;
+    overflow: hidden;
+    margin: auto;
+    z-index: 2;
+}
+
+    .model-image img {
+        width: 100%;
+        height: 100%;
+        position: relative;
+        user-select: none;
+        pointer-events: none;
+        -moz-transition: transform 1s cubic-bezier(0, 1, 1, 1);
+        -o-transition: transform 1s cubic-bezier(0, 1, 1, 1);
+        -webkit-transition: transform 1s cubic-bezier(0, 1, 1, 1);
+        transition: transform 1s cubic-bezier(0, 1, 1, 1);
+    }
+
+.model-content {
+    width: 100%;
+    height: calc(100% - 180px);
+    display: inline-block;
+}
+
+.model-content-buttons {
+    width: 170px;
+    height: calc(100% - 40px);
+    margin: auto;
+    margin-top: 40px;
+}
+
+.model-content-button {
+    width: 20px;
+    height: 20px;
+    background: #fff;
+    border-radius: 50%;
+    cursor: pointer;
+    position: relative;
+    padding: 10px;
+    margin: 20px 0px;
+    -moz-transition: all 0.3s ease;
+    -o-transition: all 0.3s ease;
+    -webkit-transition: all 0.3s ease;
+    transition: all 0.3s ease;
+}
+
+.model-content-button-text {
+    width: calc(350px - 170px);
+    height: 13px;
+    position: absolute;
+    left: calc(100% + 20px);
+    top: -5px;
+    bottom: 0;
+    margin: auto;
+    z-index: 1;
+}
+
+    .model-content-button-text span {
+        font-family: Montserrat;
+        color: #fff;
+        font-size: 13px;
+        -moz-transition: color 0.3s ease;
+        -o-transition: color 0.3s ease;
+        -webkit-transition: color 0.3s ease;
+        transition: color 0.3s ease;
+    }
+
+.model-content-button img {
+    width: 100%;
+    height: 100%;
+    user-select: none;
+    pointer-events: none;
+}
+
+.model-content-button:hover {
+    background: #ff4d4d;
+}
+
+.model-content-button:hover span {
+    color: #ff4d4d;
+}
+
+    .model-content-button:hover .model-content-button img {
+        -moz-transform: scale(1.4);
+        -ms-transform: scale(1.4);
+        -o-transform: scale(1.4);
+        -webkit-transform: scale(1.4);
+        transform: scale(1.4);
+    }
+
+    .games-model-filter {
+        width: 410px;
+        height: 25px;
+        margin-top: 2px;
+        float: left;
+        margin-left: 40px;
+    }
+
+    .games-model-filter .input-field {
+        width: 350px;
+        height: 13px;
+        min-height: 13px;
+        float: left;
+        position: relative;
+        content: "";
+        padding: 7px 10px;
+        margin-top: 0px;
+        border: 1px solid #6f6f6f;
+        color: #000;
+        font-size: 13px;
+        font-family: RobotoLight;
+        border-radius: 30px;
+        padding-bottom: 12px;
+    }
+        .games-model-filter .input-field:before {
+            width: auto;
+            height: auto;
+            content: attr(placeholder);
+            position: absolute;
+            font-family: Montserrat;
+            color: #000;
+            font-size: 10px;
+            font-weight: 100;
+            left: 10px;
+            top: 11px;
+            background: none;
+            -moz-transition: all 0.3s ease;
+            -o-transition: all 0.3s ease;
+            -webkit-transition: all 0.3s ease;
+            transition: all 0.3s ease;
+        }
+
+        .games-model-filter .input-field:focus:before, .games-model-filter .input-field:not(:empty):before {
+            top: -12px;
+            font-size: 8px;
+        }
+
+    .games-model:hover .model-image img {
+        -moz-transform: scale(1.5) rotate(7deg);
+        -ms-transform: scale(1.5) rotate(7deg);
+        -o-transform: scale(1.5) rotate(7deg);
+        -webkit-transform: scale(1.5) rotate(7deg);
+        transform: scale(1.5) rotate(7deg);
+    }
+
+.games-model:hover {
+    box-shadow: 0 0 32px 2px #fff;
+}
+
+.games-model:hover:after {
+    opacity: 1;
+}
+
+.models-scroller-addmodel {
+    width: 346px;
+    height: calc(100%);
+    border: 1px solid none;
+    margin: 0px 20px;
+    display: inline-block;
+    content: "";
+    position: absolute;
+    margin-right: 100px;
+    background: none;
+}
+
+.addmodel-plus {
+    width: 40px;
+    height: 40px;
+    border: 1px solid #949494;
+    margin: 150px auto 0px auto;
+    border-radius: 50%;
+    cursor: pointer;
+    content: "";
+    position: relative;
+    padding: 20px;
+    -moz-transition: background 0.3s ease;
+    -o-transition: background 0.3s ease;
+    -webkit-transition: background 0.3s ease;
+    transition: background 0.3s ease;
+}
+
+    .addmodel-plus:before, .addmodel-plus:after {
+        width: 30px;
+        height: 1px;
+        content: "";
+        position: absolute;
+        top: -1px;
+        bottom: 0;
+        left: -1px;
+        right: 0;
+        margin: auto;
+        background: #000;
+    }
+    .addmodel-plus:after {
+        -moz-transform: rotate(90deg);
+        -ms-transform: rotate(90deg);
+        -o-transform: rotate(90deg);
+        -webkit-transform: rotate(90deg);
+        transform: rotate(90deg);
+    }
+
+.addmodel-plus:hover {
+    background: #ff4d4d;
+    border: 1px solid transparent;
+}
+
+.addmodel-text {
+    width: 100%;
+    height: auto;
+    margin-top: 20px;
+    text-align: center;
+}
+
+.addmodel-text span {
+    font-family: Montserrat;
+    color: #000;
+    font-size: 12px;
+}

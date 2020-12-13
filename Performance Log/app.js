@@ -20,6 +20,7 @@ const socket = require("socket.io");
 const request = require("./server/js/request");
 const systeminfo = require("./server/js/systeminfo");
 const settings = require("./server/js/settingsHandler");
+const minecraftClient = require("./server/js/minecraft/minecraftClient");
 
 // Discord.js
 const discord = require("./server/js/discordPresence");
@@ -30,7 +31,31 @@ app.use(express.static('./static', { extensions: ['html'] }));
 const server = app.listen(8000);
 const io = socket(server);
 
-let dataInterval, initializedRichPresence = false, audioStreamInterval = false;
+let dataInterval, initializedRichPresence = false, audioStreamInterval = false, listenMinecraftServer = false;
+
+//if (!listenMinecraftServer) {
+//    listenMinecraftServer = true;
+
+//    minecraftClient.listen(io);
+//}
+
+
+const sendAudioStreamData = socket => {
+    // No need to create a interval function for this. The powershell script already has a interval function.
+    systeminfo.audio.audioStream(stream => {
+        // Get the audio stream value and send it to the client.
+
+        socket.emit("audioStreamSend", { d: ` ${stream}` });
+    });
+
+
+    let interval = setInterval(() => {
+        systeminfo.audio.audioLevel(level => {
+            socket.emit("audioLevelSend", { d: ` ${level}` });
+        });
+    }, 3000);
+}
+
 
 io.sockets.on("connection", socket => {
 
@@ -46,19 +71,7 @@ io.sockets.on("connection", socket => {
     if (!audioStreamInterval) {
         audioStreamInterval = true;
 
-        // No need to create a interval function for this. The powershell script already has a interval function.
-        systeminfo.audio.audioStream(stream => {
-            // Get the audio stream value and send it to the client.
-
-            socket.emit("audioStreamSend", { d: ` ${stream}` });
-        });
-
-
-        let interval = setInterval(() => {
-            systeminfo.audio.audioLevel(level => {
-                socket.emit("audioLevelSend", { d: ` ${level}` });
-            });
-        }, 3000);
+        sendAudioStreamData(socket);
     }
 
     // Function to receive the systeminformation from the systeminfo.js module.

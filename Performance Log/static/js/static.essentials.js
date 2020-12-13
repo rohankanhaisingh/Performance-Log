@@ -16,7 +16,6 @@ const listen = (socket) => {
 
     // Get the audiostream value from the server.
     socket.on("audioStreamSend", data => {
-
         let value = parseInt(data.d); // Convert the string into a int.
 
         let audioStreamMeter = $g(".audiometer-stream");

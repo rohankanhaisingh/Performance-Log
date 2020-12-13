@@ -9,8 +9,9 @@ const settings = require("./settingsHandler");
 const fs = require("fs");
 const { developerMode } = require("./settingsHandler");
 const { changePresence } = require("./discordPresence");
-const { stdout, stdin } = require("process");
-
+const { stdout, stdin } = require("process"); 
+const { audio } = require("./systeminfo");
+const steamApps = require("./getSteamApps");
 
 let isSwitchingPage, page, processes = [];
 
@@ -83,6 +84,18 @@ function init(socket) {
 
                 pres(page);
                 break;
+            case "games":
+                // Direct the client (user) to the commandline page.
+                page = data.page;
+
+                socket.emit("acceptPageRequest", {
+                    page: data.page,
+                    time: Date.now(),
+                    message: "Page has been requested"
+                });
+
+                pres(page);
+                break;
             default:
                 // If none of these cases matches, send a message back that the request has been denied.
 
@@ -117,14 +130,19 @@ function init(socket) {
         if (typeof data.request !== 'undefined') {
             switch (data.request) {
                 case 'systemInformation':
-                    systeminfo.all.initialize(function (data) {
+                    systeminfo.all.initialize(data => {
                         socket.emit("initHardwareInformation", data);
                     });
                     break;
                 case "batteryInformation":
-                    systeminfo.battery.initialize(function (data) {
+                    systeminfo.battery.initialize(data => {
                         socket.emit("initBatteryInformation", data);
                     })
+                    break;
+                case "games":
+                    steamApps.getAll(data => {
+                        socket.emit("compressedSteamApps", data);
+                    });
                     break;
             }
         }
@@ -135,7 +153,7 @@ function init(socket) {
         switch (a.type) {
             case "mem":
                 // If the type is memory
-                systeminfo.ram.initialize(function (b) {
+                systeminfo.ram.initialize(b => {
                     // Get all the memory information and send it to the webpage.
 
                     socket.emit("getobject:accept", { type: "mem", data: b, get: a.get});
@@ -254,6 +272,9 @@ function init(socket) {
                 // Close the NodeJS application.
                 process.exit();
             }
+
+            systeminfo.audio.destroy('all');
+           
         }
     });
 

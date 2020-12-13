@@ -1,0 +1,26 @@
+{
+  "730": {
+    "name": "Counter-Strike Global Offensive",
+    "imageHeader": "https://esportsjunkie.com/wp-content/uploads/2019/05/CSGO-Banner-24-3-2019.jpg"
+  },
+  "4000": {
+    "name": "GarrysMod",
+    "imageHeader": "https://cdn.cloudflare.steamstatic.com/steam/apps/4000/capsule_616x353.jpg?t=1601306982"
+  },
+  "550": {
+    "name": "Left 4 Dead 2",
+    "imageHeader": "https://cdn.cloudflare.steamstatic.com/steam/apps/550/capsule_616x353.jpg?t=1601578341"
+  },
+  "242760": {
+    "name": "The Forest",
+    "imageHeader": "https://steamcdn-a.akamaihd.net/steam/apps/242760/capsule_616x353.jpg?t=1590522045"
+  },
+  "1091500": {
+    "name": "Cyberpunk 2077",
+    "imageHeader": "https://cdn.cloudflare.steamstatic.com/steam/apps/1091500/header.jpg?t=1607742831"
+  },
+  "255710": {
+    "name": "Cities: Skylines",
+    "imageHeader": "https://cdn.cloudflare.steamstatic.com/steam/apps/255710/header.jpg?t=1605628043"
+  }
+}
