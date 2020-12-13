@@ -14,6 +14,19 @@ NOTE: This project requires the latest NodeJS version!!
 
 Performance Log is an application that runs on NodeJS, so make sure you have NodeJS installed. You also need Visual Studio to open this solution.
 
+### Visual Studio
+You may have to install the NodeJS tools in Visual Studio Installer before launching this application.
+
+Download the solution from the repository and open it with Visual Studio 2017 or higher. Click on the 'debug' button or hit F5 to start debugging. If it doesn't open the web application, go in the project folder > static > user > open settings.json. 
+Change ``developerMode`` to ``false``.
+
+### Without Visual Studio
+Make sure to have NodeJS installed, if you don't have it installed go to https://nodejs.org/en/ and install it for your system.
+
+To launch the application, go into the project folder and find for ``run.bat``. Once you opened started the bat file, you will see a black window; don't close that window. A webpage should open for you. If it doesn't, go to into the project folder > static > user > open ``settings.json`` and change ``developerMode`` to ``false``. Make sure to restart the application by closing the black command window and open it again.
+
+## Pages
+
 ### Index page
 When you start the batch file (run.bat) or when you open the solution in Visual Studio and start debugging, it will open a NodeJS server and it will start the webpage for you (if you have developermode disabled).
 You will be directed to the performance page (basically the index page). That page is a localpage, that means only you can visit the page.
