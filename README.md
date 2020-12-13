@@ -25,6 +25,10 @@ Make sure to have NodeJS installed, if you don't have it installed go to https:/
 
 To launch the application, go into the project folder and find for ``run.bat``. Once you opened started the bat file, you will see a black window; don't close that window. A webpage should open for you. If it doesn't, go to into the project folder > static > user > open ``settings.json`` and change ``developerMode`` to ``false``. Make sure to restart the application by closing the black command window and open it again.
 
+You can also just open your browser and go to https://localhost:8000/view. Only you can visit the page because it is being hosted on a local server (you).
+
+If you have ``developerMode`` in the ``settings.json`` file set to ``false`` and you close the web application in the browser (closing the tab or refreshing), the server will automatically close.
+
 ## Pages
 
 ### Index page
@@ -63,8 +67,14 @@ properties by yourself. Keep in mind that you have no errors in the settings fil
 	- Ability to control and host a dedicated Web server.
 	- Fixing bugs (that will always be a feauture).
 
+----------------------------------
+
 CREDITS: The background videos are from Pexels. I am not sponsored by Pexels, I just like their free-to-use videos.
 
 NOTE: Please not copy or share any of these file without the permission of the owner (Rohan Kanhaising). I spent a lot of time and energy into this project and I really like working on it. Wait... This makes no sense... This application is open-source, why would you not be able to copy and share any of these files. I actually have no idea lol
 
 I hope you guys like this project :). 
+
+----------------------------------
+
+Any questions? Hit me up on Discord ``Microsoft Visual Studio#1943`` or on Instagram https://instagram.com/rohankanhaisingh
