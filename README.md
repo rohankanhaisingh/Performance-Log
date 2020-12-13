@@ -21,6 +21,9 @@ You will be directed to the performance page (basically the index page). That pa
 On that page (index), you will see 3 cards displaying information and usage about three hardware units; CPU, RAM and your Disk.
 You can't do really much on that page except reading information and the usage.
 
+### Games
+This page will show all (steam) games you have installed. You can launch the games from the webpage.
+
 ### Energy page
 The second page is the energy page. On that page you will see information about your battery (if you have a laptop of course). It will show
 your battery usage in a epic self-made CSS battery layout with cool waves in the background. 
@@ -37,12 +40,12 @@ properties by yourself. Keep in mind that you have no errors in the settings fil
 ----------------------------------
 
 
-## New in version 0.7.2:
-	- Added a Discord Rich Presence feature to show your friends what you are doing on Performance Log.
-
+## New in version 0.8.1:
+	- Added a new page to launch games.
+	- Redesigned the notifications.
+	- More Powershell scripts to handle serverside requests.
 
 ## Ideas in mind that might come into the project (I am working on this):
-	- Ability to launch games from the page.
 	- Ability to control and host a dedicated Minecraft Server.
 	- Ability to control and host a dedicated Web server.
 	- Fixing bugs (that will always be a feauture).
