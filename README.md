@@ -1,4 +1,10 @@
-# Performance Log
+# Performance Log (Delayed)
+
+-----------------------------------
+
+### NOTE: I am currently taking a little break with this project. I am working on something else for a friend who really needs it so yeah... The application is still available though.
+
+-----------------------------------
 
 Performance Log, an NodeJS application.
 
