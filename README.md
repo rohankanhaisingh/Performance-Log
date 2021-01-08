@@ -2,7 +2,7 @@
 
 -----------------------------------
 
-### NOTE: I am currently taking a little break with this project. I am working on something else for a friend who really needs it so yeah... The application is still available though.
+### NOTE: I am currently taking a little break. I am working on something else for a friend who really needs it so yeah... The application is still available though.
 
 -----------------------------------
 
@@ -77,7 +77,7 @@ properties by yourself. Keep in mind that you have no errors in the settings fil
 
 CREDITS: The background videos are from Pexels. I am not sponsored by Pexels, I just like their free-to-use videos.
 
-NOTE: Please not copy or share any of these file without the permission of the owner (Rohan Kanhaising). I spent a lot of time and energy into this project and I really like working on it. Wait... This makes no sense... This application is open-source, why would you not be able to copy and share any of these files. I actually have no idea lol
+NOTE: Please do not copy or share any of these file without permission of the owner (Rohan Kanhaisingh). I spent a lot of time and energy into this project and I really like working on it. Wait... This makes no sense... This application is open-source, why would you not be able to copy and share any of these files. I actually have no idea lol
 
 I hope you guys like this project :). 
 
