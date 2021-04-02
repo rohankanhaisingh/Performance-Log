@@ -23,7 +23,7 @@ Performance Log is an application that runs on NodeJS, so make sure you have Nod
 ### Visual Studio
 You may have to install the NodeJS tools in Visual Studio Installer before launching this application.
 
-Download the solution from the repository and open it with Visual Studio 2017 or higher. Click on the 'debug' button or hit F5 to start debugging. If it doesn't open the web application, go in the project folder > static > user > open settings.json. 
+Download the solution from the repository and open it with Visual Studio 2017 or higher. Click on the 'debug' button or hit F5 to start debugging. If it doesn't open the web application, go in the project folder > ``static`` > ``user`` > open ``settings.json``. 
 Change ``developerMode`` to ``false``.
 
 ### Without Visual Studio
